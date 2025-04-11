@@ -11,7 +11,7 @@ import { removeUnverifiedAccounts } from "./services/removeUnverifiedAccounts.js
 import { cloudinaryConnect } from "./config/cloudinary.js";
 
 const app = express();
-dotenv.config({ path: "./config/.env" });
+dotenv.config({ path: ".env" });
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
