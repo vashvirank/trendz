@@ -17,6 +17,8 @@ import axios from "axios";
 import { category } from "../data/products.js";
 import { BadgeCheck } from "lucide-react";
 
+const BACKEND_URL = import.meta.env.VITE_BASE_URL;
+
 const ProductDetails = () => {
   const url =
     "https://res.cloudinary.com/dsror8r39/image/upload/v1744352677/user_shodqy.png";
@@ -222,7 +224,7 @@ const ProductDetails = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:7000/api/v1/product/admin/add-images/${id}`,
+        `${BACKEND_URL}/product/admin/add-images/${id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -243,7 +245,7 @@ const ProductDetails = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:7000/api/v1/product/admin/remove-image/${id}`,
+        `${BACKEND_URL}/product/admin/remove-image/${id}`,
         {
           data: { imageUrl: imageUrlToRemove },
           withCredentials: true,

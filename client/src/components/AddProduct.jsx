@@ -5,6 +5,8 @@
 // import axios from "axios";
 // import { category } from "../data/products.js";
 
+// const BACKEND_URL = import.meta.env.VITE_BASE_URL;
+
 // const AddProduct = () => {
 //   const data = {
 //     Men: category.Men.subCategories,
@@ -107,7 +109,7 @@
 
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:7000/api/v1/product/admin/upload-images",
+//         `${BACKEND_URL}/product/admin/upload-images`,
 //         formData,
 //         {
 //           headers: { "Content-Type": "multipart/form-data" },
@@ -546,7 +548,7 @@
 
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:7000/api/v1/product/admin/upload-images",
+//         `${BACKEND_URL}/product/admin/upload-images`,
 //         formData,
 //         {
 //           headers: { "Content-Type": "multipart/form-data" },

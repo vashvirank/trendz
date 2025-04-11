@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BACKEND_URL = import.meta.env.VITE_BASE_URL;
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -24,7 +26,7 @@ const userSlice = createSlice({
 export const fetchAllUsers = () => async (dispatch) => {
   dispatch(userSlice.actions.fetchAllUsersRequest());
   await axios
-    .get("http://localhost:7000/api/v1/auth/me", { withCredentials: true })
+    .get(`${BACKEND_URL}/auth/me`, { withCredentials: true })
     .then((res) => {
       dispatch(userSlice.actions.fetchAllUsersSuccess(res.data.users));
     })
