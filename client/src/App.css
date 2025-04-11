@@ -1,0 +1,45 @@
+body{
+  background-color: rgb(42, 42, 42);
+  color: rgb(227, 227, 227);
+}
+
+.hide-x-scrollbar {
+  overflow-x: scroll;
+  scrollbar-width: none; 
+}
+
+.hide-x-scrollbar::-webkit-scrollbar {
+  height: 0px; 
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
+    -webkit-text-fill-color: white !important;
+    caret-color: white !important;
+}
+
+.clip-inside {
+  clip-path: polygon(
+    0% 15%, 9% 9%, 15% 0%, 85% 0%, 92% 9%, 100% 15%,
+    100% 85%, 92% 91%, 85% 100%, 15% 100%, 8% 91%, 0% 85%
+  );
+}
+
+.infinite-slider {
+  animation: scroll-left 30s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
