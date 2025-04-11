@@ -29,11 +29,11 @@ app.listen(PORT, () => {
   console.log(`running at🎃 http://localhost:${PORT}`);
 });
 
-app.use("/api/v1/auth", authRouter);
+app.use("/auth", authRouter);
 
-app.use("/api/v1/order", orderRouter);
+app.use("/order", orderRouter);
 
-app.use("/api/v1/product", productRouter);
+app.use("/product", productRouter);
 
 removeUnverifiedAccounts();
 connectDB();
