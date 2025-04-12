@@ -576,7 +576,7 @@ const ProductDetails = () => {
                   {isEditing && (
                     <button
                       onClick={() => deleteSpecification(index)}
-                      className="bg-red-500 text-white px-2 py-1 rounded"
+                      className="hover:scale-95 transition-transform bg-red-500 text-white px-2 py-1 rounded"
                     >
                       Delete
                     </button>
@@ -586,7 +586,7 @@ const ProductDetails = () => {
               {isEditing && (
                 <button
                   onClick={addSpecification}
-                  className="bg-blue-500 text-white px-3 py-1 rounded mt-2"
+                  className="hover:scale-95 transition-transform bg-blue-500 text-white px-3 py-1 rounded mt-2"
                 >
                   Add Specification
                 </button>
@@ -700,7 +700,7 @@ const ProductDetails = () => {
                   {isEditing && (
                     <button
                       onClick={() => deleteVariant(index)}
-                      className="bg-red-500 text-white px-2 py-1 rounded"
+                      className="hover:scale-95 transition-transform bg-red-500 text-white px-2 py-1 rounded"
                     >
                       Delete
                     </button>
@@ -710,7 +710,7 @@ const ProductDetails = () => {
               {isEditing && (
                 <button
                   onClick={addVariant}
-                  className="bg-blue-500 text-white px-3 py-1 rounded mt-2"
+                  className="hover:scale-95 transition-transform bg-blue-500 text-white px-3 py-1 rounded mt-2"
                 >
                   Add Variant
                 </button>
@@ -969,7 +969,7 @@ const ProductDetails = () => {
 
             <button
               type="submit"
-              className="bg-blue-500 text-white min-w-50 py-1 rounded"
+              className="hover:scale-95 transition-transform bg-blue-500 text-white min-w-50 py-1 rounded"
             >
               Submit Review
             </button>
@@ -1004,7 +1004,7 @@ const ProductDetails = () => {
               <button
                 onClick={addImage}
                 disabled={!selectedImages}
-                className="bg-blue-500 m-1 px-3 py-2 rounded"
+                className="hover:scale-95 transition-transform bg-blue-500 m-1 px-3 py-2 rounded"
               >
                 Add Image
               </button>
@@ -1070,13 +1070,13 @@ const ProductDetails = () => {
               <>
                 <button
                   onClick={() => dispatch(cancelEditing())}
-                  className="bg-gray-500 text-white px-3 py-1 rounded"
+                  className="hover:scale-95 transition-transform bg-gray-500 text-white px-3 py-1 rounded"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleSave}
-                  className="bg-green-500 text-white px-5 py-2 rounded mr-2"
+                  className="hover:scale-95 transition-transform bg-green-500 text-white px-5 py-2 rounded mr-2"
                 >
                   Save
                 </button>
@@ -1085,13 +1085,13 @@ const ProductDetails = () => {
               <>
                 <button
                   onClick={handleDelete}
-                  className="bg-red-500 text-white px-3 py-1 rounded"
+                  className="hover:scale-95 transition-transform bg-red-500 text-white px-3 py-1 rounded"
                 >
                   Delete Product
                 </button>
                 <button
                   onClick={() => dispatch(setEditing(product))}
-                  className="bg-blue-500 text-white px-5 py-2 rounded"
+                  className="hover:scale-95 transition-transform bg-blue-500 text-white px-5 py-2 rounded"
                 >
                   Edit
                 </button>

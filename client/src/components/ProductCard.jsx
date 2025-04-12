@@ -70,7 +70,7 @@ const ProductCard = ({ product }) => {
       {user?.role !== "admin" && user?.role !== "seller" && (
         <button
           onClick={handleWishListClick}
-          className="absolute top-2 right-2 z-5 p-1 rounded-full hover:scale-110 transition-transform duration-200"
+          className="hover:scale-95 transition-transform absolute top-2 right-2 z-5 p-1 rounded-full hover:scale-110 transition-transform duration-200"
         >
           {isInWishlist ? (
             <svg width="22" height="22" fill="white" className="text-rose-500">
@@ -133,7 +133,7 @@ const ProductCard = ({ product }) => {
         {user?.role !== "admin" && user?.role !== "seller" && (
           <button
             onClick={handleAddToCart}
-            className=" bg-green-500/10 p-2 text-green-500/70 hover:bg-green-500/20 transition rounded text-sm"
+            className="hover:scale-95 bg-green-500/10 p-2 text-green-500/70 hover:bg-green-500/20 transition rounded text-sm"
           >
             <ShoppingCart size={20} />
           </button>

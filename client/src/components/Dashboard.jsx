@@ -387,7 +387,7 @@ const Dashboard = () => {
 
             <button
               onClick={handleLogout}
-              className="text-blue-500 hover:text-blue-600 bg-blue-500/15 px-5 py-0.5 rounded-full"
+              className="hover:scale-95 transition-transform text-blue-500 hover:text-blue-600 bg-blue-500/15 px-5 py-0.5 rounded-full"
             >
               Click here
             </button>

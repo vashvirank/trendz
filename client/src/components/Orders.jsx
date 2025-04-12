@@ -100,7 +100,7 @@ const Orders = () => {
                         <div className="p-4 pt-0">
                           <button
                             onClick={() => handleCancelOrder(order?.order_id)}
-                            className="w-full text-sm text-blue-800 border border-blue-800/30 hover:bg-blue-800 hover:text-white transition px-4 py-2 rounded mt-2"
+                            className="hover:scale-95 w-full text-sm text-blue-800 border border-blue-800/30 hover:bg-blue-800 hover:text-white transition px-4 py-2 rounded mt-2"
                           >
                             Cancel Order
                           </button>

@@ -239,7 +239,7 @@ const CartBoard = () => {
                         />
                         <button
                           onClick={handleApplyCouponCode}
-                          className="w-60 border border-blue-500/20 bg-blue-500/15 text-blue-500 hover:bg-blue-500/20 py-2 rounded"
+                          className="hover:scale-95 transition-transform w-60 border border-blue-500/20 bg-blue-500/15 text-blue-500 hover:bg-blue-500/20 py-2 rounded"
                         >
                           Apply Coupon
                         </button>
@@ -277,7 +277,7 @@ const CartBoard = () => {
                       </div>
                       <button
                         onClick={handleProceedToCheckout}
-                        className="bg-blue-800 w-full text-white py-3 rounded mt-4"
+                        className="hover:scale-95 transition-transform bg-blue-800 w-full text-white py-3 rounded mt-4"
                       >
                         Proceed to Checkout
                       </button>
@@ -364,7 +364,7 @@ const CartBoard = () => {
                 placeholder="Enter Email Address"
                 className="px-4 py-2 border rounded w-64"
               />
-              <button className="bg-blue-900 px-6 py-2 rounded">
+              <button className="hover:scale-95 transition-transform bg-blue-900 px-6 py-2 rounded">
                 Subscribe
               </button>
             </div>

@@ -168,13 +168,13 @@ const MainNavbar = () => {
                 Login <ChevronDown size={20} />
               </NavLink>
               {loginButtonHover && (
-                <div className="z-10 absolute rounded w-44 px-3 py-4 bg-gray-700 flex flex-col gap-2">
+                <div className="z-10 absolute rounded w-44 px-3 py-4 bg-gray-50 border border-black/10 dark:bg-gray-700 flex flex-col gap-2">
                   <p className="flex flex-col gap-3">
                     <span>New to TrendZ?</span>
                     <NavLink
                       draggable="false"
                       to="/register"
-                      className="py-1 px-3 text-center bg-blue-500 hover:bg-blue-600 hover:scale-95 transition-transform rounded"
+                      className="py-1 px-3 text-center text-white bg-blue-500 hover:bg-blue-600 hover:scale-95 transition-transform rounded"
                     >
                       Register
                     </NavLink>
@@ -251,7 +251,7 @@ const MainNavbar = () => {
           </NavLink>
           {profileButtonHover &&
             (user ? (
-              <div className="z-10 absolute w-28 -right-5 p-2 rounded bg-gray-800 flex flex-col gap-y-2">
+              <div className="z-10 absolute w-28 -right-5 p-2 rounded border border-black/10 bg-gray-50 dark:bg-gray-800 flex flex-col gap-y-2">
                 <NavLink draggable="false" to="/profile" className="text-blue">
                   Dashboard
                 </NavLink>
@@ -261,7 +261,7 @@ const MainNavbar = () => {
                 </button>
               </div>
             ) : (
-              <div className="z-10 absolute w-48 -right-5 p-2 rounded bg-gray-800 flex flex-col gap-y-2">
+              <div className="z-10 absolute w-48 -right-5 p-2 rounded border border-black/10 bg-gray-50 dark:bg-gray-800 flex flex-col gap-y-2">
                 <p className="flex justify-between items-center">
                   <span className="text-sm">login to view profile</span>
                   <NavLink
@@ -278,7 +278,7 @@ const MainNavbar = () => {
                   <NavLink
                     draggable="false"
                     to="/register"
-                    className="py-0.5 px-2 bg-blue-500/50 rounded"
+                    className="py-0.5 px-2 text-white bg-blue-500 dark:bg-blue-500/50 rounded"
                   >
                     Register
                   </NavLink>

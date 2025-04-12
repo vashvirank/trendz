@@ -18,8 +18,8 @@ const LogoSlider = () => {
   ];
   let colors = [
     "bg-blue-900/10 dark:bg-blue-950/60",
-    "bg-green-600/10 dark:bg-green-600/20",
-    "bg-gray-800/10 dark:bg-gray-300/20",
+    "bg-green-600/10 dark:bg-green-600/40",
+    "bg-gray-800/10 dark:bg-gray-300/80",
     "bg-blue-500/10 dark:bg-blue-500/20",
     "bg-green-600/10 dark:bg-green-400/15",
     "bg-yellow-500/10 dark:bg-yellow-500/20",
@@ -29,7 +29,7 @@ const LogoSlider = () => {
     "bg-orange-500/10 dark:bg-orange-500/10",
     "bg-blue-700/15 dark:bg-blue-700/25",
     "bg-yellow-500/10 dark:bg-yellow-500/20",
-    "bg-gray-800/10 dark:bg-gray-100/20",
+    "bg-gray-800/10 dark:bg-gray-100/80",
   ];
   const repeatedLogos = [...logos, ...logos];
   colors = [...colors, ...colors];

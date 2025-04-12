@@ -57,7 +57,7 @@ const SearchBar = () => {
       />
       <button
         type="submit"
-        className="py-1 pr-1.5 pl-1 lg:pr-3 lg:pl-2 rounded-tr-lg rounded-br-lg"
+        className="hover:scale-95 transition-transform py-1 pr-1.5 pl-1 lg:pr-3 lg:pl-2 rounded-tr-lg rounded-br-lg"
       >
         <Search size={20} />
       </button>

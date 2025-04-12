@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Facebook, Instagram, Twitter, Mail } from "lucide-react";
+import { toast } from "react-toastify";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const handleSubscribe = () => {
+    if (email === "") {
+      toast.warning("Please enter email to subscribe");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const valid = emailRegex.test(email);
+    if (!valid) {
+      toast.warning("please provide correct email address");
+      return;
+    }
+    toast.success("Subscribed successfully! 🎉");
+    setEmail("");
+  };
+
   const url =
     "https://res.cloudinary.com/dsror8r39/image/upload/v1742750135/trendz/static";
 
@@ -28,10 +45,15 @@ const Footer = () => {
               <Mail size="18" className="hidden md:block" />
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Email Address"
                 className="px-4 py-1 w-52 md:w-60 focus:outline-0 text-gray-900 dark:text-white"
               />
-              <button className="bg-gradient-to-br from-blue-900 to-blue-950 dark:from-blue-800 dark:to-blue-900 text-gray-200 font-semibold px-3 md:px-6 py-1.5 rounded-full">
+              <button
+                onClick={handleSubscribe}
+                className="bg-gradient-to-br from-blue-900 to-blue-950 dark:from-blue-800 dark:to-blue-900 text-gray-200 font-semibold px-3 md:px-6 py-1.5 rounded-full"
+              >
                 Subscribe
               </button>
             </div>
@@ -63,28 +85,27 @@ const Footer = () => {
             </h3>
             <ul className="space-y-1 text-sm">
               <li>
-                <a href="#" className="">
+                <a href="/store/Men" className="hover:text-blue-400">
                   Men
                 </a>
               </li>
               <li>
-                <a href="#" className="">
+                <a href="/store/Women" className="hover:text-blue-400">
                   Women
                 </a>
               </li>
               <li>
-                <a href="#" className="">
+                <a href="/store/Home-furniture" className="hover:text-blue-400">
                   Home & Furniture
                 </a>
               </li>
               <li>
-                <a href="#" className="">
+                <a href="/store/Kids" className="hover:text-blue-400">
                   Kids
                 </a>
               </li>
             </ul>
           </div>
-
           {/* Category Info */}
           <div className="col-span-2 p-3">
             <h3 className="text-md font-semibold mb-2 text-gray-800 dark:text-gray-200">
@@ -92,28 +113,27 @@ const Footer = () => {
             </h3>
             <ul className="space-y-1 text-sm">
               <li>
-                <a href="#" className="">
+                <a href="/store/Electronics" className="hover:text-blue-400">
                   Electronics
                 </a>
               </li>
               <li>
-                <a href="#" className="">
+                <a href="/store/Beauty" className="hover:text-blue-400">
                   Beauty
                 </a>
               </li>
               <li>
-                <a href="#" className="">
-                  Art-crafts
+                <a href="/store/Art-crafts" className="hover:text-blue-400">
+                  Art Crafts
                 </a>
               </li>
               <li>
-                <a href="#" className="">
+                <a href="/store/Grocery" className="hover:text-blue-400">
                   Grocery
                 </a>
               </li>
             </ul>
           </div>
-
           {/* Contact & Social */}
           <div className="col-span-3 p-3">
             <h3 className="text-md font-semibold mb-2 text-gray-800 dark:text-gray-200">
@@ -145,7 +165,17 @@ const Footer = () => {
                 <Mail strokeWidth={1.5} size={22} />
               </a>
             </div>
-            <p className="text-sm">helpdesk.trendz@gmail.com</p>
+            <p
+              onClick={() =>
+                window.open(
+                  "https://mail.google.com/mail/?view=cm&to=helpdesk.trendz@gmail.com&su=Support%20Request&body=Hi%20Trendz%20Team%2C%0AI%20need%20assistance%20with...",
+                  "_blank"
+                )
+              }
+              className="hover:text-blue-500 cursor-pointer"
+            >
+              helpdesk.trendz@gmail.com
+            </p>
           </div>
         </div>
 

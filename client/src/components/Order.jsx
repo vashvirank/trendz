@@ -623,7 +623,7 @@ const Order = () => {
                   <button
                     type="button"
                     onClick={prevStep}
-                    className={`px-4 py-2 border border-black/15 dark:border-white/15 rounded-lg dark:text-gray-300hover:bg-gray-50 transition-all duration-300 ${
+                    className={`hover:scale-95 px-4 py-2 border border-black/15 dark:border-white/15 rounded-lg dark:text-gray-300hover:bg-gray-50 transition-all duration-300 ${
                       step === 1
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
