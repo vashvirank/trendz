@@ -97,23 +97,8 @@ const ProductSchema = new mongoose.Schema(
 );
 
 ProductSchema.pre("save", function (next) {
-  if (this.reviews && this.reviews.length > 0) {
-    const total = this.reviews.reduce((sum, r) => sum + (r.rating || 0), 0);
-    const average = total / this.reviews.length;
-
-    this.ratings = Number(average.toFixed(1)); // ✅ convert to float (e.g. 4.5)
-  } else {
-    this.ratings = 0;
-  }
-  next();
-});
-
-ProductSchema.pre("save", function (next) {
   this.finalPrice = this.price - (this.price * this.discount) / 100;
-  next();
-});
 
-ProductSchema.pre("save", function (next) {
   if (this.variants && this.variants.length > 0) {
     const totalStock = this.variants.reduce(
       (sum, variant) => sum + (variant.stock || 0),
@@ -122,6 +107,7 @@ ProductSchema.pre("save", function (next) {
     this.stock = totalStock;
     this.available = this.stock > 0 ? true : false;
   }
+
   next();
 });
 

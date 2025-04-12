@@ -34,6 +34,7 @@ const Order = () => {
     }
     if (error1) {
       toast.error(error1);
+      console.log(error1);
       dispatch(resetOrderSlice());
     }
   }, [message1, error1, dispatch]);

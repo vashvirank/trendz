@@ -87,13 +87,13 @@ const Store = () => {
                     </NavLink>
                   ))}
                 </div>
-                <p className="mt-4 mb-2 md:text-sm text-gray-300/90">
+                <p className="mt-4 mb-2 md:text-sm text-gray-600/90 dark:text-gray-300/90">
                   {product.descrption}
                 </p>
                 <NavLink
                   target="_blank"
                   to={product.link}
-                  className="text-sky-500 bg-sky-500/15 px-2 rounded"
+                  className="text-sky-500 hover:scale-95 duration-200 transition-transform dark:text-sky-500 bg-sky-500/20 hover:bg-sky-500/25 dark:bg-sky-500/15 px-2 rounded"
                 >
                   see more
                 </NavLink>
