@@ -63,7 +63,10 @@ const Store = () => {
         <main>
           <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 py-3 px-1 md:px-5">
             {productsData?.map((product, index) => (
-              <div key={index} className="bg-gray-100 dark:bg-gray-800 p-3">
+              <div
+                key={index}
+                className="bg-gray-100 dark:bg-gray-800/50 rounded-lg p-3"
+              >
                 <h3 className="mb-2 text-lg font-semibold">
                   {product.heading}
                 </h3>
@@ -89,6 +92,7 @@ const Store = () => {
                   {product.descrption}
                 </p>
                 <NavLink
+                  target="_blank"
                   to={product.link}
                   className="text-sky-500 bg-sky-500/15 px-2 rounded"
                 >
@@ -110,6 +114,7 @@ const Store = () => {
                     Get 23% off on your orders
                   </p>
                   <NavLink
+                    target="_blank"
                     to="/store/Women/Topwear"
                     draggable="false"
                     className="bg-yellow-950/50 dark:bg-orange-200/40 rounded-full py-1 px-3"
@@ -136,6 +141,7 @@ const Store = () => {
                     Get 26% off on your orders
                   </p>
                   <NavLink
+                    target="_blank"
                     to="/store/Men/Topwear"
                     draggable="false"
                     className="bg-yellow-950/50 dark:bg-orange-200/40 rounded-full py-1 px-3"

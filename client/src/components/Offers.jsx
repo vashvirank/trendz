@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { offers } from "../data/offersData";
+import { offers, productsIds } from "../data/offersData";
 import InfiniteSlider from "../layout/InfiniteSlider";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -9,33 +9,7 @@ const BACKEND_URL = import.meta.env.VITE_BASE_URL;
 
 const Offers = () => {
   const [products, setProducts] = useState([]);
-  const productsIds = [
-    "67e8fd587090e3ff6167d261",
-    "67e6e23c74ecf5e790a5b40c",
-    "67e8fd587090e3ff6167d248",
-    "67e8fd3c7090e3ff6167d200",
-    "67e8fd587090e3ff6167d24d",
-    "67e6e1fa74ecf5e790a5b3ec",
-    "67e8fd587090e3ff6167d230",
-    "67e6e26b74ecf5e790a5b42a",
-    "67e8fd587090e3ff6167d242",
-    "67e6e27b74ecf5e790a5b500",
-    "67e8fe367090e3ff6167d2b8",
-    "67e6e2c874ecf5e790a5b5ac",
-    "67e8fe367090e3ff6167d2ff",
-    "67e6e28274ecf5e790a5b591",
-    "67e6e2c874ecf5e790a5b5e3",
-    "67e8fe367090e3ff6167d2ef",
-    "67e6e28274ecf5e790a5b582",
-    "67e6e2c874ecf5e790a5b5a2",
-    "67e8fe4c7090e3ff6167d317",
-    "67e6e28274ecf5e790a5b550",
-    "67e6e28274ecf5e790a5b580",
-    "67e8fe367090e3ff6167d2fb",
-    "67e6e28274ecf5e790a5b58a",
-    "67e6e2c874ecf5e790a5b59e",
-    "67e6e27374ecf5e790a5b4d2",
-  ];
+
   const fetchProducts = async (ids) => {
     try {
       const res = await axios.post(`${BACKEND_URL}/product/get-multiple`, {
@@ -187,6 +161,7 @@ const Offers = () => {
                     </p>
                     <NavLink
                       to={offer.link}
+                      target="_blank"
                       className="text-white bg-blue-500 hover:bg-blue-600 rounded py-1 px-3"
                     >
                       Shop Now

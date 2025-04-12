@@ -7,7 +7,8 @@ import { toast } from "react-toastify";
 import ProductCard from "../components/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../store/slices/categorySlice.js";
-import { ArrowUpAZ, ArrowDownAZ } from "lucide-react";
+import { ArrowUpAZ, ArrowDownAZ, X, Funnel } from "lucide-react";
+import FilterTag from "../components/FilterTag.jsx";
 
 const limit = import.meta.env.VITE_PAGE_LIMIT || 10;
 
@@ -23,7 +24,6 @@ const Men = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setCategory("Men"));
-    console.log("eruifgeui");
   }, []);
 
   const [productsList, setProductsList] = useState([]);
@@ -144,13 +144,44 @@ const Men = () => {
     setSearchParams({});
   };
 
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+
+  const toggleMobileFilters = () => {
+    setShowMobileFilters((prev) => !prev);
+  };
+
   return (
     <>
       <CategoryNavbar />
-      <div className="bg-blue-50 dark:bg-gray-950 text-gray-700 dark:text-gray-300">
+      <div className="bg-blue-50 dark:bg-gray-950/80 text-gray-700 dark:text-gray-300">
         <img draggable="false" loading="lazy" src={banner} />
+        {/* Mobile Filters Button */}
+        <div className="md:hidden w-full rounded-t-2xl fixed bottom-0 z-10 bg-gray-950/80 backdrop-blur-[5px] p-2">
+          <div className="flex items-center justify-center gap-3">
+            <button
+              onClick={toggleMobileFilters}
+              className="flex items-center gap-1 px-5 py-1 rounded-full bg-blue-500/10 text-blue-500"
+            >
+              Filters <Funnel size={14} />
+            </button>
+            <button
+              className="px-5 py-1 rounded-full bg-gray-300/10 text-gray-300"
+              onClick={resetFilters}
+            >
+              Reset ↻
+            </button>
+          </div>
+        </div>
+
+        {/* Backdrop */}
+        {showMobileFilters && (
+          <div
+            className="fixed inset-0 z-9 bg-black/50 md:hidden"
+            onClick={toggleMobileFilters}
+          />
+        )}
         <div className="flex">
-          <section className="min-w-38 min-h-[100vh] bg-blue-100/50 dark:bg-white/5">
+          <section className="hidden md:block min-w-40 min-h-[100vh] bg-blue-100/50 dark:bg-white/5">
             <div>
               {/* Reset Button */}
               <div className="my-3 flex justify-center items-center gap-2">
@@ -163,9 +194,10 @@ const Men = () => {
                 </button>
               </div>
             </div>
+
             <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
               <h3 className="mb-1">Order</h3>
-              <span className="flex items-center">
+              <span className="flex items-center gap-1">
                 <input
                   type="checkbox"
                   id="ascending"
@@ -182,7 +214,7 @@ const Men = () => {
                   Ascending <ArrowUpAZ size="20" />
                 </label>
               </span>
-              <span className="flex items-center">
+              <span className="flex items-center gap-1">
                 <input
                   type="checkbox"
                   id="descending"
@@ -205,7 +237,7 @@ const Men = () => {
             <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
               <h3 className="mb-1">Sort By</h3>
               {["price", "ratings", "no. of reviews"].map((sort) => (
-                <span key={sort} className="flex items-center">
+                <span key={sort} className="flex items-center gap-1">
                   <input
                     type="checkbox"
                     id={sort}
@@ -256,7 +288,7 @@ const Men = () => {
             <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
               <h3 className="mb-1.5">Type</h3>
               {category["Men"]?.subCategoryTypes[subCategory]?.map((Type) => (
-                <span key={Type} className="flex gap-2 items-center">
+                <span key={Type} className="flex gap-1 items-center">
                   <input
                     type="checkbox"
                     id={Type}
@@ -277,7 +309,7 @@ const Men = () => {
             <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
               <h3 className="mb-1.5">Brand</h3>
               {category["Men"]?.subCategoryBrands[subCategory]?.map((Brand) => (
-                <span key={Brand} className="flex gap-2 items-center">
+                <span key={Brand} className="flex gap-1 items-center">
                   <input
                     type="checkbox"
                     id={Brand}
@@ -295,7 +327,167 @@ const Men = () => {
             </div>
           </section>
 
-          <div className="overflow-x-hidden px-5">
+          <div
+            className={`${
+              showMobileFilters ? "fixed" : "hidden"
+            } bottom-0 z-10`}
+          >
+            <section className="grid grid-cols-2 w-screen min-h-[80vh] bg-blue-100/50 dark:bg-gray-900 px-3">
+              <div className="col-span-2">
+                {/* Reset Button */}
+                <div className="my-3 pr-1 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-3">
+                    <h2 className=" font-semibold">Filter</h2>
+                    <button
+                      className="text-blue-500 hover:bg-white/5 border border-white/10 px-1 rounded"
+                      onClick={resetFilters}
+                    >
+                      Reset ↻
+                    </button>
+                  </div>
+                  <button onClick={toggleMobileFilters}>
+                    <X />
+                  </button>
+                </div>
+              </div>
+
+              {/* order */}
+              <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                <h3 className="mb-1">Order</h3>
+                <span className="flex gap-2 items-center">
+                  <input
+                    type="checkbox"
+                    id="ascending"
+                    className={`${
+                      order === "ascending" ? "scale-90" : "appearance-none"
+                    } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                    checked={order === "ascending"}
+                    onChange={() => handleSortChange("ascending")}
+                  />
+                  <label
+                    htmlFor="ascending"
+                    className="w-full flex gap-1 items-end"
+                  >
+                    Ascending <ArrowUpAZ size="20" />
+                  </label>
+                </span>
+                <span className="flex gap-2 items-center">
+                  <input
+                    type="checkbox"
+                    id="descending"
+                    className={`${
+                      order === "descending" ? "scale-90" : "appearance-none"
+                    } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                    checked={order === "descending"}
+                    onChange={() => handleSortChange("descending")}
+                  />
+                  <label
+                    htmlFor="descending"
+                    className="w-full flex gap-1 items-end"
+                  >
+                    Descending <ArrowDownAZ size="20" />
+                  </label>
+                </span>
+              </div>
+
+              {/* sort by */}
+              <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                <h3 className="mb-1">Sort By</h3>
+                {["price", "ratings", "no. of reviews"].map((sort) => (
+                  <span key={sort} className="flex gap-2 items-center">
+                    <input
+                      type="checkbox"
+                      id={sort}
+                      className={`${
+                        sortBy.includes(sort) ? "scale-90" : "appearance-none"
+                      } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                      onChange={handleSortBy}
+                      checked={sortBy.includes(sort)}
+                    />
+                    <label htmlFor={sort} className="w-full">
+                      {sort}
+                    </label>
+                  </span>
+                ))}
+              </div>
+
+              {/* color */}
+              <div className="col-span-2 p-3 border-t border-t-black/10 dark:border-t-white/10">
+                <h3 className="mb-1.5">Colour</h3>
+                <div className="flex gap-1 px-2">
+                  {category["Men"]?.colours.map((colour) => {
+                    const isSelected = color.includes(colour);
+                    return (
+                      <div
+                        key={colour}
+                        onClick={() => handleColorChange(colour)}
+                        className={`cursor-pointer h-8 w-8 border-2 rounded-full flex flex-col justify-center items-center transition 
+              ${isSelected ? "border-white" : "border-transparent"}`}
+                      >
+                        <span
+                          className="w-6 h-6 rounded-full"
+                          style={{ backgroundColor: colour }}
+                        />
+                        {colour === "Multi" && (
+                          <img
+                            draggable="false"
+                            src="/images/multi.png"
+                            className="w-6 h-6"
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* type  */}
+              <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                <h3 className="mb-1.5">Type</h3>
+                {category["Men"]?.subCategoryTypes[subCategory]?.map((Type) => (
+                  <span key={Type} className="flex gap-2 items-center">
+                    <input
+                      type="checkbox"
+                      id={Type}
+                      className={`${
+                        type.includes(Type) ? "scale-90" : "appearance-none"
+                      } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                      onChange={handleTypeChange}
+                      checked={type.includes(Type)}
+                    />
+                    <label htmlFor={Type} className="w-full">
+                      {Type}
+                    </label>
+                  </span>
+                ))}
+              </div>
+
+              {/* brand  */}
+              <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                <h3 className="mb-1.5">Brand</h3>
+                {category["Men"]?.subCategoryBrands[subCategory]?.map(
+                  (Brand) => (
+                    <span key={Brand} className="flex gap-2 items-center">
+                      <input
+                        type="checkbox"
+                        id={Brand}
+                        className={`${
+                          brand.includes(Brand) ? "scale-90" : "appearance-none"
+                        } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                        onChange={handleBrandChange}
+                        checked={brand.includes(Brand)}
+                      />
+                      <label htmlFor={Brand} className="w-full">
+                        {Brand}
+                      </label>
+                    </span>
+                  )
+                )}
+              </div>
+            </section>
+          </div>
+
+          <div className="overflow-x-hidden px-1 md:px-5">
             <div className="mt-5 flex gap-2 md:gap-6 lg:gap-10 overflow-x-scroll hide-x-scrollbar">
               {category["Men"]?.subCategories.map((category, index) => (
                 <button
@@ -357,12 +549,77 @@ const Men = () => {
                 </button>
               </div>
             </div>
+
+            {/* Selected Filters */}
+            {(order ||
+              color.length ||
+              brand.length ||
+              type.length ||
+              sortBy.length) > 0 && (
+              <div className="flex flex-wrap gap-2 mt-2 py-2 border-gray-200 dark:border-white/10">
+                {/* Order */}
+                {order && (
+                  <FilterTag
+                    color={"bg-blue-500/15 text-blue-500"}
+                    label={order}
+                    onRemove={() => setOrder("")}
+                  />
+                )}
+
+                {/* Color */}
+                {color.map((c) => (
+                  <FilterTag
+                    color={"bg-pink-500/15 text-pink-500"}
+                    key={c}
+                    label={c}
+                    onRemove={() => handleColorChange(c)}
+                  />
+                ))}
+
+                {/* Brand */}
+                {brand.map((b) => (
+                  <FilterTag
+                    color={"bg-blue-500/15 text-blue-500"}
+                    key={b}
+                    label={b}
+                    onRemove={() =>
+                      setBrand((prev) => prev.filter((item) => item !== b))
+                    }
+                  />
+                ))}
+
+                {/* Type */}
+                {type.map((t) => (
+                  <FilterTag
+                    color={"bg-green-500/15 text-green-500"}
+                    key={t}
+                    label={t}
+                    onRemove={() =>
+                      setType((prev) => prev.filter((item) => item !== t))
+                    }
+                  />
+                ))}
+
+                {/* Sort By */}
+                {sortBy.map((s) => (
+                  <FilterTag
+                    color={"bg-purple-500/15 text-purple-500"}
+                    key={s}
+                    label={s}
+                    onRemove={() =>
+                      setSortBy((prev) => prev.filter((item) => item !== s))
+                    }
+                  />
+                ))}
+              </div>
+            )}
+
             {loading ? (
               <p>Loading...</p>
             ) : (
               <>
                 {productsList && productsList.length !== 0 ? (
-                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                  <div className="mt-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3">
                     {productsList?.map((product) => (
                       <ProductCard key={product._id} product={product} />
                     ))}

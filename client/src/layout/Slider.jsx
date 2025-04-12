@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Slider = () => {
   const url =
@@ -115,6 +116,17 @@ const Slider = () => {
     ],
   ];
 
+  const links = [
+    "/store/Women",
+    "/store/Men",
+    "/store/Women",
+    "/store/Kids",
+    "/store/Home-furniture",
+    "/store/Electronics/Tablets",
+    "/store/Electronics",
+    "/store/Beauty/Makeup",
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -148,11 +160,13 @@ const Slider = () => {
                 <p className={`tracking-[1px] ${textStyles[index][1]}`}>
                   {text[index][1]}
                 </p>
-                <button
+                <NavLink
+                  target="_blank"
+                  to={links[index]}
                   className={`${buttonStyles[index]} text-white text-sm self-center md:self-start w-22 rounded px-2 text-center`}
                 >
                   Shop Now
-                </button>
+                </NavLink>
               </div>
               <img
                 draggable="false"

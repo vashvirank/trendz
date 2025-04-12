@@ -898,7 +898,10 @@ const ProductDetails = () => {
             {editData?.reviews?.map((review, i) => (
               <div key={review._id || i}>
                 <div className="flex items-center gap-4">
-                  <img src={url} className="w-12 h-12" />
+                  <img
+                    src={review?.image || url}
+                    className="rounded-full w-12 h-12"
+                  />
                   <div>
                     <h4 className="font-semibold flex items-center gap-1">
                       <p>{review?.name || "Anonymous"}</p>

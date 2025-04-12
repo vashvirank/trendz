@@ -12,7 +12,7 @@ const limit = import.meta.env.VITE_PAGE_LIMIT || 10;
 
 const Kids = () => {
   const url =
-    "https://res.cloudinary.com/dsror8r39/image/upload/v1742750135/trendz/pages/category/Kids/";
+    "https://res.cloudinary.com/dsror8r39/image/upload/v1742754716/trendz/pages/category/Kids/";
 
   const banner =
     "https://res.cloudinary.com/dsror8r39/image/upload/v1742750135/trendz/static/category-banners/kids-section";

@@ -8,6 +8,7 @@ import {
 } from "../store/slices/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { ShoppingCart, Star } from "lucide-react";
 
 const ProductCard = ({ product }) => {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
@@ -64,12 +65,12 @@ const ProductCard = ({ product }) => {
   }, [dispatch, message, error]);
 
   return (
-    <div className="relative max-w-sm w-full rounded-xl overflow-hidden border border-black/5 dark:border-white/10 hover:shadow-lg transition-shadow duration-300 group">
+    <div className="relative rounded-xl overflow-hidden border border-black/5 dark:border-white/10 hover:shadow-lg transition-shadow duration-300 group">
       {/* Heart Button */}
       {user?.role !== "admin" && user?.role !== "seller" && (
         <button
           onClick={handleWishListClick}
-          className="absolute top-2 right-2 z-10 p-1 rounded-full hover:scale-110 transition-transform duration-200"
+          className="absolute top-2 right-2 z-5 p-1 rounded-full hover:scale-110 transition-transform duration-200"
         >
           {isInWishlist ? (
             <svg width="22" height="22" fill="white" className="text-rose-500">
@@ -91,7 +92,7 @@ const ProductCard = ({ product }) => {
       >
         {/* Product Image */}
         {product?.images && (
-          <div className="overflow-hidden">
+          <div className="overflow-hidden relative">
             <img
               draggable="false"
               loading="lazy"
@@ -99,46 +100,45 @@ const ProductCard = ({ product }) => {
               alt={product?.name}
               className="w-full aspect-square object-cover transform group-hover:scale-105 transition-transform duration-300"
             />
+            <span className="absolute top-1 left-1 tracking-tighter rounded-tl-lg rounded-br-lg backdrop-blur-[1px] text-xs px-1 bg-rose-500/80 text-white">
+              {product?.discount}% OFF
+            </span>
           </div>
         )}
 
         {/* Product Info */}
-        <div className="p-4 space-y-1">
-          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 truncate">
+        <div className="pt-2 px-3 dark:bg-gray-500/10">
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
+              Brand: {product?.brand}
+            </p>
+            <div className="text-yellow-400 text-xs flex items-center gap-1">
+              {product?.ratings}{" "}
+              <Star size={14} strokeWidth={0.5} className="fill-yellow-400" />
+            </div>
+          </div>
+          <h2 className="text-lg font-semibold  text-gray-800 dark:text-gray-200 truncate">
             {product?.name}
           </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
-            Brand: {product?.brand}
-          </p>
-
-          <div className="flex items-center justify-between mt-1">
-            <div className="text-green-600 font-semibold text-sm">
-              ${product?.finalPrice}
-              <span className="ml-2 line-through text-gray-400 text-xs">
-                ${product?.price}
-              </span>
-            </div>
-            <span className="text-red-500 text-xs font-semibold">
-              {product?.discount}% OFF
-            </span>
-          </div>
-
-          <div className="text-yellow-500 text-sm">{product?.ratings} ★</div>
         </div>
       </a>
-
-      {/* Add to Cart Button */}
-      {user?.role !== "admin" && user?.role !== "seller" && (
-        <div className="p-4 pt-0">
+      <div className="flex items-center justify-between pb-2 px-3 dark:bg-gray-500/10">
+        <div className="text-blue-500/80 font-semibold">
+          ${product?.finalPrice}
+          <span className="ml-2 font-normal line-through text-gray-400 text-xs">
+            ${product?.price}
+          </span>
+        </div>
+        {/* Add to Cart Button */}
+        {user?.role !== "admin" && user?.role !== "seller" && (
           <button
             onClick={handleAddToCart}
-            className="w-full bg-green-500/10 text-green-600 border border-green-500/20 
-        hover:bg-green-500/20 transition px-3 py-1.5 rounded-md text-sm"
+            className=" bg-green-500/10 p-2 text-green-500/70 hover:bg-green-500/20 transition rounded text-sm"
           >
-            Add to Cart
+            <ShoppingCart size={20} />
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
