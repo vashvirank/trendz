@@ -15,6 +15,17 @@ const Slider = () => {
     `${url}8`,
   ];
 
+  const imageStyles = [
+    "h-[35vh] md:h-auto md:w-[50vh]",
+    "h-[40vh] w-[40vh] md:w-[50vh] md:h-[50vh]",
+    "h-[38vh] w-[40vh] md:h-[50vh] md:w-[50vh]",
+    "h-[39vh] w-[44vh] md:h-[50vh] md:w-[60vh]",
+    "h-[40vh] w-[40vh] md:h-[50vh] md:w-[50vh]",
+    "h-[35vh] w-[40vh] md:h-[50vh] md:w-[50vh]",
+    "h-[40vh] w-[50vh] md:h-[50vh] md:w-[50vh]",
+    "h-[36vh] w-[36vh] md:h-[50vh] md:w-[50vh]",
+  ];
+
   const colours = [
     "bg-gradient-to-br dark:from-[#13111a] dark:to-[#5a4f75] from-[#ffffff] to-[#ddcffc]",
     "bg-gradient-to-br dark:from-gray-950 dark:to-gray-700 from-white to-blue-200",
@@ -69,16 +80,6 @@ const Slider = () => {
     "bg-blue-500/80",
     "bg-[#d154b0] dark:bg-[#a62e87]",
   ];
-  const imageStyles = [
-    "md:w-[50vh]",
-    "h-[40vh] w-[40vh] md:w-[50vh] md:h-[50vh]",
-    "h-[35vh] w-[40vh] md:h-[50vh] md:w-[50vh]",
-    "h-[30vh] w-[40vh] md:h-[50vh] md:w-[60vh]",
-    "h-[30vh] w-[30vh] md:h-[50vh] md:w-[50vh]",
-    "h-[30vh] w-[30vh] md:h-[50vh] md:w-[50vh]",
-    "h-[30vh] w-[30vh] md:h-[50vh] md:w-[50vh]",
-    "h-[30vh] mt-10 md:mt-0 w-[30vh] md:h-[50vh] md:w-[50vh]",
-  ];
   const text = [
     [
       "Exclusive Deals",
@@ -124,7 +125,7 @@ const Slider = () => {
 
   return (
     <>
-      <div className="relative w-full h-[50vh] overflow-hidden">
+      <div className="relative w-full h-[60vh] md:h-[50vh] overflow-hidden">
         {/* Slides */}
         <div
           className="flex transition-transform duration-700 ease-in-out"
@@ -133,14 +134,14 @@ const Slider = () => {
           {images.map((image, index) => (
             <div
               key={index}
-              className={`flex-shrink-0 flex flex-col h-[60vh] justify-center items-end
+              className={`flex-shrink-0 md:flex h-[60vh] 
               md:flex-row md:h-[50vh] md:justify-evenly
               w-full ${colours[index]} ${
                 index % 2 ? "md:flex-row-reverse" : ""
               } `}
             >
               <div
-                className="flex flex-col justify-center gap-5 w-[100vw] h-[16vh] text-center 
+                className="flex flex-col justify-center gap-5 w-[100vw] h-[25vh] text-center 
                 md:text-left md:h-[50vh] md:w-[60vh]"
               >
                 <p className={textStyles[index][0]}>{text[index][0]}</p>

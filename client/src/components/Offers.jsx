@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import offers from "../data/offersData";
+import { offers } from "../data/offersData";
 import InfiniteSlider from "../layout/InfiniteSlider";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -54,8 +54,8 @@ const Offers = () => {
   return (
     <>
       <div className="bg-gray-200 dark:bg-gray-900">
-        <div className="py-3 px-5">
-          <h2 className="text-center font-semibold text-2xl mb-3">
+        <div className="py-3 px-1 md:px-5">
+          <h2 className="text-center font-semibold text-2xl m-3">
             Best Sellers in fashion & beauty
           </h2>
           <div className="relative">
@@ -63,8 +63,8 @@ const Offers = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-1 justify-center">
-          <div className="group w-1/2 md:w-2/5 aspect-[3/1] [perspective:1000px]">
+        <div className="flex flex-col md:flex-row items-center gap-1 justify-center">
+          <div className="group w-[90%] md:w-2/5 aspect-[3/1] [perspective:1000px]">
             <div
               className="relative w-full h-full transition-transform duration-700 group-hover:[transform:rotateX(180deg)]"
               style={{
@@ -106,7 +106,7 @@ const Offers = () => {
             </div>
           </div>
 
-          <div className="group w-1/2 md:w-2/5 aspect-[3/1] [perspective:1000px]">
+          <div className="group w-[90%] md:w-2/5 aspect-[3/1] [perspective:1000px]">
             <div
               className="relative w-full h-full transition-transform duration-700 group-hover:[transform:rotateX(180deg)]"
               style={{
@@ -171,6 +171,7 @@ const Offers = () => {
                       {offer.offer}
                     </p>
                     <NavLink
+                      to={offer.link}
                       draggable="false"
                       className="text-sm text-blue-500 bg-blue-500/15 border border-blue-500/15 hover:bg-blue-500/20 rounded px-1"
                     >
@@ -184,9 +185,12 @@ const Offers = () => {
                     <p className="font-bold text-2xl text-white/80">
                       {offer.offer}
                     </p>
-                    <button className="text-white bg-blue-500 hover:bg-blue-600 rounded py-1 px-3">
+                    <NavLink
+                      to={offer.link}
+                      className="text-white bg-blue-500 hover:bg-blue-600 rounded py-1 px-3"
+                    >
                       Shop Now
-                    </button>
+                    </NavLink>
                   </div>
                 </div>
               </div>

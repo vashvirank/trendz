@@ -5,7 +5,8 @@ import CategoryNavbar from "../layout/CategoryNavbar";
 import { category } from "../data/products.js";
 import { toast } from "react-toastify";
 import ProductCard from "../components/ProductCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory } from "../store/slices/categorySlice.js";
 import { ArrowUpAZ, ArrowDownAZ } from "lucide-react";
 
 const limit = import.meta.env.VITE_PAGE_LIMIT || 10;
@@ -19,6 +20,11 @@ const Men = () => {
 
   const { subCategory1 } = useParams();
   const { type1 } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setCategory("Men"));
+    console.log("eruifgeui");
+  }, []);
 
   const [productsList, setProductsList] = useState([]);
   const [order, setOrder] = useState("");

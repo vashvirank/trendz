@@ -29,26 +29,78 @@ const InfiniteSlider = () => {
   }, [dispatch]);
 
   return (
-    <div className="overflow-hidden w-full">
-      <div className="infinite-slider flex w-max gap-x-1 md:gap-x-2">
-        {products &&
-          products[0]?.images &&
-          [...products].map((product, index) => (
-            <NavLink
-              draggable="false"
-              to={`/product/${product?._id}`}
-              key={index}
-              className="w-30 md:w-54 rounded-lg shadow-lg flex-shrink-0"
-            >
-              <img
+    <div className="relative overflow-hidden m-0 md:m-5 py-2 -mb-8">
+      {/* Inline animation with responsive speed */}
+      <style>
+        {`
+          @keyframes scroll-slow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          @keyframes scroll-fast {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+
+          .scrolling-desktop {
+            animation: scroll-slow 25s linear infinite;
+          }
+
+          .scrolling-mobile {
+            animation: scroll-fast 20s linear infinite;
+          }
+
+          .group:hover .scrolling-desktop,
+          .group:hover .scrolling-mobile {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+
+      <div className="group">
+        {/* Desktop */}
+        <div className="hidden sm:flex gap-3 w-max scrolling-desktop">
+          {products &&
+            products[0]?.images &&
+            [...products, ...products].map((product, index) => (
+              <NavLink
                 draggable="false"
-                loading="lazy"
-                src={product?.images[0]}
-                alt={`Product ${index}`}
-                className="w-full rounded-lg"
-              />
-            </NavLink>
-          ))}
+                to={`/product/${product?._id}`}
+                key={index}
+                className="w-30 md:w-54 rounded-lg shadow-lg flex-shrink-0"
+              >
+                <img
+                  draggable="false"
+                  loading="lazy"
+                  src={product?.images[0]}
+                  alt={`Product ${index}`}
+                  className="w-full opcaity-90 hover:opacity-100 hover:scale-105 hover:brightness-110 hover:contrast-125 transition-transform duration-200 rounded-lg"
+                />
+              </NavLink>
+            ))}
+        </div>
+
+        {/* Mobile */}
+        <div className="flex sm:hidden w-max scrolling-mobile">
+          {products &&
+            products[0]?.images &&
+            [...products, ...products].map((product, index) => (
+              <NavLink
+                draggable="false"
+                to={`/product/${product?._id}`}
+                key={index}
+                className="w-30 md:w-54 rounded-lg shadow-lg flex-shrink-0"
+              >
+                <img
+                  draggable="false"
+                  loading="lazy"
+                  src={product?.images[0]}
+                  alt={`Product ${index}`}
+                  className="w-full rounded-lg"
+                />
+              </NavLink>
+            ))}
+        </div>
       </div>
     </div>
   );

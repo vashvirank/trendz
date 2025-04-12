@@ -94,7 +94,7 @@ const CategoryNavbar = () => {
                 <NavLink
                   draggable="false"
                   to={`/store/${category}`}
-                  onClick={() => setSelectedTab(category)}
+                  onClick={() => selectedTab(category)}
                   className={`${
                     selectedTab === category
                       ? `bg-${colours[category]}/10 border-b-${colours[category]} text-${colours[category]}`
