@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const NotFound = () => {
   return (
     <>
-      <div className="m-4 h-[84vh] border border-white/10 rounded flex flex-col md:flex-row items-center justify-center">
+      <div className="m-4 h-[85vh] border border-white/10 rounded flex flex-col md:flex-row items-center justify-center">
         <img
           draggable="false"
           loading="lazy"

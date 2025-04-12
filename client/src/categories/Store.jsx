@@ -1,7 +1,6 @@
 import CategoryNavbar from "../layout/CategoryNavbar";
 import Slider from "../layout/Slider";
 import Offers from "../components/Offers";
-import Footer from "../layout/Footer";
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -162,7 +161,6 @@ const Store = () => {
         <Offers />
         <h2 className="text-center m-5 text-2xl">Our top brands</h2>
         <LogoSlider />
-        <Footer />
       </div>
     </>
   );

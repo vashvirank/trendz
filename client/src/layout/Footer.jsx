@@ -23,7 +23,7 @@ const Footer = () => {
     "https://res.cloudinary.com/dsror8r39/image/upload/v1742750135/trendz/static";
 
   return (
-    <footer>
+    <footer className="bg-gray-200 dark:bg-gray-900">
       <div className="relative top-16">
         <div className="flex flex-col md:flex-row gap-10 bg-gray-50 dark:bg-[#0B2447] mx-auto rounded-lg w-[92%] md:w-[85%] p-8">
           <img

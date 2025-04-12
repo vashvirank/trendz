@@ -41,6 +41,7 @@ import AllOrders from "./pages/AllOrders";
 import AllUsers from "./pages/AllUsers";
 import Dashboard from "./components/Dashboard";
 import AllSales from "./pages/AllSales";
+import Footer from "./layout/Footer";
 
 function App() {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
@@ -158,6 +159,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ToastContainer theme="dark" />
+        <Footer />
       </Router>
     </ToastProvider>
   );

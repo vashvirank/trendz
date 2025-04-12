@@ -41,8 +41,8 @@ const Login = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="min-h-screen p-4 md:p-8 bg-sky-50 dark:bg-gray-950 text-gray-700 dark:text-gray-300">
-      <div className="w-full md:w-130 mx-auto bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-blue-500/10">
+    <div className="min-h-[92vh] flex justify-center items-center p-4 md:p-8 bg-sky-50 dark:bg-gray-950/70 text-gray-700 dark:text-gray-300">
+      <div className="w-full md:w-130 bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-blue-500/10">
         {/* Header */}
         <div
           className="p-5 text-gray-600 dark:text-gray-300 
