@@ -29,7 +29,7 @@ const Offers = () => {
     <>
       <div className="bg-gray-200 dark:bg-gray-900">
         <div className="py-3 px-1 md:px-5">
-          <h2 className="text-center font-semibold text-2xl m-3">
+          <h2 className="text-center font-semibold text-2xl mt-8">
             Best Sellers in fashion & beauty
           </h2>
           <div className="relative">
@@ -124,7 +124,7 @@ const Offers = () => {
           </div>
         </div>
 
-        <h2 className="text-center m-5 text-4xl font-bold text-sky-700">
+        <h2 className="mx-auto cursor-pointer hover:-translate-y-0.5 hover:tracking-[1px] transition-all text-center m-8 text-3xl font-semibold scale-y-125 text-gray-300">
           TOP OFFERS
         </h2>
 
@@ -162,7 +162,7 @@ const Offers = () => {
                     <NavLink
                       to={offer.link}
                       target="_blank"
-                      className="text-white bg-blue-500 hover:bg-blue-600 rounded py-1 px-3"
+                      className="transition-transform hover:scale-95 text-white bg-blue-500 hover:bg-blue-600 rounded py-1 px-3"
                     >
                       Shop Now
                     </NavLink>

@@ -23,7 +23,7 @@ export const colours = {
     primary: "text-teal-400 bg-teal-400/10 border-b-teal-400",
     secondary: "bg-teal-400/20",
   },
-  "home-furniture": {
+  "Home-furniture": {
     primary: "text-purple-400 bg-purple-400/10 border-b-purple-400",
     secondary: "bg-purple-400/20",
   },

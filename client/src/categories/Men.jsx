@@ -156,16 +156,16 @@ const Men = () => {
       <div className="bg-blue-50 dark:bg-gray-950/80 text-gray-700 dark:text-gray-300">
         <img draggable="false" loading="lazy" src={banner} />
         {/* Mobile Filters Button */}
-        <div className="md:hidden w-full rounded-t-2xl fixed bottom-0 z-10 bg-gray-950/80 backdrop-blur-[5px] p-2">
+        <div className="md:hidden w-full rounded-t-2xl fixed bottom-0 z-10 bg-gray-900/90 backdrop-blur-[5px] p-2">
           <div className="flex items-center justify-center gap-3">
             <button
               onClick={toggleMobileFilters}
-              className="flex items-center gap-1 px-5 py-1 rounded-full bg-blue-500/10 text-blue-500"
+              className="flex items-center gap-1 px-5 py-1 rounded-full bg-blue-500/20 text-blue-500"
             >
               Filters <Funnel size={14} />
             </button>
             <button
-              className="px-5 py-1 rounded-full bg-gray-300/10 text-gray-300"
+              className="px-5 py-1 rounded-full bg-gray-300/20 text-gray-300"
               onClick={resetFilters}
             >
               Reset ↻
@@ -181,6 +181,7 @@ const Men = () => {
           />
         )}
         <div className="flex">
+          {/* siderbar desktop */}
           <section className="hidden md:block min-w-40 min-h-[100vh] bg-blue-100/50 dark:bg-white/5">
             <div>
               {/* Reset Button */}
@@ -327,6 +328,7 @@ const Men = () => {
             </div>
           </section>
 
+          {/* siderbar mobile */}
           <div
             className={`${
               showMobileFilters ? "fixed" : "hidden"
@@ -488,7 +490,7 @@ const Men = () => {
           </div>
 
           <div className="overflow-x-hidden px-1 md:px-5">
-            <div className="mt-5 flex gap-2 md:gap-6 lg:gap-10 overflow-x-scroll hide-x-scrollbar">
+            <div className="mt-5 mb-6 flex gap-3 md:gap-6 lg:gap-10 overflow-x-scroll hide-x-scrollbar">
               {category["Men"]?.subCategories.map((category, index) => (
                 <button
                   key={category}
@@ -498,16 +500,16 @@ const Men = () => {
                   <div
                     className={`${
                       subCategory === category
-                        ? "border-b-blue-500/80 bg-blue-500/20"
-                        : "border-b-transparent bg-blue-500/10"
-                    } p-1 rounded-md border-b-2`}
+                        ? "border-t-blue-500/80 bg-blue-500/20"
+                        : "border-t-transparent bg-blue-500/10"
+                    } p-1 rounded-md border-t-3`}
                   >
                     <img
                       draggable="false"
                       loading="lazy"
                       src={`${url}${category}.png`}
                       alt={category}
-                      className="min-w-16 md:min-w-20 max-w-16 md:max-w-20 aspect-square"
+                      className="min-w-15 max-w-15 md:min-w-19 md:max-w-19 aspect-square"
                     />
                   </div>
                   <p className="text-xs">{category}</p>
@@ -619,7 +621,7 @@ const Men = () => {
             ) : (
               <>
                 {productsList && productsList.length !== 0 ? (
-                  <div className="mt-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3">
+                  <div className="mt-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3.5">
                     {productsList?.map((product) => (
                       <ProductCard key={product._id} product={product} />
                     ))}

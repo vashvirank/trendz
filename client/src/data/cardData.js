@@ -54,44 +54,59 @@ export const productsData = [
     heading: "Best in men category",
     link: "/store/Men",
     descrption: "Elevate your essentials – made for the modern man.",
+    style: "text-sky-500 bg-sky-500/20 hover:bg-sky-500/25 dark:bg-sky-500/15",
   },
   {
     heading: "Women's Fashion",
     link: "/store/Women",
     descrption: "Unleash your inner glow – fashion redefined.",
+    style:
+      "text-pink-500 bg-pink-500/20 hover:bg-pink-500/25 dark:bg-pink-500/15",
   },
   {
     heading: "Light It Up",
     link: "/store/Home-furniture/Lighting",
     descrption:
       "Bright ideas start here, Light up your life, one room at a time.",
+    style:
+      "text-yellow-500 bg-yellow-500/20 hover:bg-yellow-500/25 dark:bg-yellow-500/15",
   },
   {
     heading: "Radiant Looks",
     link: "/store/Beauty",
     descrption: "Be your own kind of beautiful, Glow up starts now",
+    style:
+      "text-purple-500 bg-purple-500/20 hover:bg-purple-500/25 dark:bg-purple-500/15",
   },
   {
     heading: "Daily Essentials",
     link: "/store/Grocery",
     descrption:
       "From pantry to plate – all in one place, Freshness delivered daily.",
+    style:
+      "text-green-500 bg-green-500/20 hover:bg-green-500/25 dark:bg-green-500/15",
   },
   {
     heading: "Gadget Zone",
     link: "/store/Electronics",
     descrption: "Smart tech Smarter living, Plug in - Power up - Level up",
+    style:
+      "text-blue-500 bg-blue-500/20 hover:bg-blue-500/25 dark:bg-blue-500/15",
   },
   {
     heading: "Artful Finds",
     link: "/store/Art-Crafts",
     descrption:
       "Create magic with every stroke, Inspiration starts with your hands.",
+    style:
+      "text-rose-500 bg-rose-500/20 hover:bg-rose-500/25 dark:bg-rose-500/15",
   },
   {
     heading: "Tiny Trends",
     link: "/store/Kids",
     descrption:
       "Little things for your little ones, Playful picks, joyful hearts.",
+    style:
+      "text-orange-300 bg-orange-300/20 hover:bg-orange-300/25 dark:bg-orange-300/15",
   },
 ];

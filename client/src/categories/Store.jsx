@@ -66,6 +66,10 @@ const Store = () => {
                 key={index}
                 className="bg-gray-100 dark:bg-gray-800/50 rounded-lg p-3"
               >
+                {/* <div className="flex items-center gap-3 mb-2">
+                  <span className="h-3 w-3 aspect-square rounded-full bg-sky-500/80 ring-2 ring-sky-500/50"></span>
+                  <h3 className="text-lg font-semibold">{product.heading}</h3>
+                </div> */}
                 <h3 className="mb-2 text-lg font-semibold">
                   {product.heading}
                 </h3>
@@ -93,7 +97,7 @@ const Store = () => {
                 <NavLink
                   target="_blank"
                   to={product.link}
-                  className="text-sky-500 hover:scale-95 duration-200 transition-transform dark:text-sky-500 bg-sky-500/20 hover:bg-sky-500/25 dark:bg-sky-500/15 px-2 rounded"
+                  className={`${product.style} hover:scale-95 duration-200 transition-transform px-2 rounded`}
                 >
                   see more
                 </NavLink>
@@ -116,7 +120,7 @@ const Store = () => {
                     target="_blank"
                     to="/store/Women/Topwear"
                     draggable="false"
-                    className="bg-yellow-950/50 dark:bg-orange-200/40 rounded-full py-1 px-3"
+                    className="hover:scale-95 transition bg-yellow-950/50 dark:bg-orange-200/40 rounded-full py-1 px-3"
                   >
                     Shop now
                   </NavLink>
@@ -143,7 +147,7 @@ const Store = () => {
                     target="_blank"
                     to="/store/Men/Topwear"
                     draggable="false"
-                    className="bg-yellow-950/50 dark:bg-orange-200/40 rounded-full py-1 px-3"
+                    className="hover:scale-95 transition bg-yellow-950/50 dark:bg-orange-200/40 rounded-full py-1 px-3"
                   >
                     Shop now
                   </NavLink>

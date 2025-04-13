@@ -52,7 +52,7 @@ const Footer = () => {
               />
               <button
                 onClick={handleSubscribe}
-                className="bg-gradient-to-br from-blue-900 to-blue-950 dark:from-blue-800 dark:to-blue-900 text-gray-200 font-semibold px-3 md:px-6 py-1.5 rounded-full"
+                className="hover:scale-95 hover:text-white transition bg-gradient-to-br from-blue-900 to-blue-950 dark:from-blue-800 dark:to-blue-900 text-gray-200 font-semibold px-3 md:px-6 py-1.5 rounded-full"
               >
                 Subscribe
               </button>
@@ -142,25 +142,25 @@ const Footer = () => {
             <div className="flex space-x-5 my-5">
               <a
                 href="#"
-                className="text-blue-500/75 hover:scale-105 hover:text-blue-500 bg-blue-500/20 p-1.5 rounded-lg"
+                className="text-blue-500/75 hover:scale-110 hover:text-blue-500 bg-blue-500/20 p-1.5 rounded-lg"
               >
                 <Facebook strokeWidth={1.5} size={22} />
               </a>
               <a
                 href="#"
-                className="text-pink-500/75 hover:scale-105 hover:text-pink-500 bg-pink-500/20 p-1.5 rounded-lg"
+                className="text-pink-500/75 hover:scale-110 hover:text-pink-500 bg-pink-500/20 p-1.5 rounded-lg"
               >
                 <Instagram strokeWidth={1.5} size={22} />
               </a>
               <a
                 href="#"
-                className="text-sky-400/75 hover:scale-105 hover:text-sky-400 bg-sky-400/20 p-1.5 rounded-lg"
+                className="text-sky-400/75 hover:scale-110 hover:text-sky-400 bg-sky-400/20 p-1.5 rounded-lg"
               >
                 <Twitter strokeWidth={1.5} size={22} />
               </a>
               <a
                 href="#"
-                className="text-green-500/75 hover:scale-105 hover:text-green-500 bg-green-500/20 p-1.5 rounded-lg"
+                className="text-green-500/75 hover:scale-110 hover:text-green-500 bg-green-500/20 p-1.5 rounded-lg"
               >
                 <Mail strokeWidth={1.5} size={22} />
               </a>

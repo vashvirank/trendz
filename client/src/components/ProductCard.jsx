@@ -113,7 +113,7 @@ const ProductCard = ({ product }) => {
               Brand: {product?.brand}
             </p>
             <div className="text-yellow-400 text-xs flex items-center gap-1">
-              {product?.ratings}{" "}
+              {product?.ratings?.toFixed(1)}{" "}
               <Star size={14} strokeWidth={0.5} className="fill-yellow-400" />
             </div>
           </div>
@@ -133,7 +133,7 @@ const ProductCard = ({ product }) => {
         {user?.role !== "admin" && user?.role !== "seller" && (
           <button
             onClick={handleAddToCart}
-            className="hover:scale-95 bg-green-500/10 p-2 text-green-500/70 hover:bg-green-500/20 transition rounded text-sm"
+            className="hover:scale-95 transition bg-green-500/10 p-2 text-green-500/70 hover:bg-green-500/20  rounded text-sm"
           >
             <ShoppingCart size={20} />
           </button>

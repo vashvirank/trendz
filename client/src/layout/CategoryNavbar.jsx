@@ -61,7 +61,7 @@ const CategoryNavbar = () => {
           {isMenuOpen ? (
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="px-1 focus:outline-none text-gray-300 hover:text-white flex items-center"
+              className="px-1 focus:outline-none text-gray-700 dark:text-gray-300 dark:hover:text-white flex items-center"
             >
               categories
               <svg width="20" height="20">
@@ -71,7 +71,7 @@ const CategoryNavbar = () => {
           ) : (
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="px-1 pb-1 focus:outline-none text-gray-300 hover:text-white flex items-center"
+              className="px-1 pb-1 focus:outline-none dark:text-gray-300 dark:hover:text-white flex items-center"
             >
               categories
               <svg width="20" height="20">
@@ -83,7 +83,7 @@ const CategoryNavbar = () => {
 
         {/* mobile menu */}
         {isMenuOpen && (
-          <ul className="absolute z-1 rounded-b md:hidden p-2.5 flex flex-col bg-gray-800/70 backdrop-blur-[8px]">
+          <ul className="absolute z-1 rounded-b-xl md:hidden p-2.5 flex flex-col bg-sky-50/50 dark:bg-gray-800/80 backdrop-blur-[8px]">
             {categories?.map((category) => (
               <div
                 key={category}
@@ -155,18 +155,18 @@ const CategoryNavbar = () => {
                 <div
                   className={`absolute z-10 ${
                     index > 5 ? "md:right-0 lg:left-0" : "left-0"
-                  } top-9 text-gray-400`}
+                  } top-9 text-gray-600 dark:text-gray-400`}
                 >
-                  <div className="bg-gray-800 grid grid-cols-3 w-120 rounded-lg p-3">
+                  <div className="bg-blue-100 dark:bg-gray-800 grid grid-cols-3 w-120 rounded-lg p-3">
                     {category[cat]?.subCategories?.map((subCategory) => (
                       <div
                         key={subCategory}
-                        className="flex flex-col p-2 border rounded-lg border-white/5"
+                        className="flex flex-col p-2 border rounded-lg border-black/5 dark:border-white/5"
                       >
                         <NavLink
                           draggable="false"
                           to={`/store/${cat}/${subCategory}`}
-                          className="hover:text-blue-300 text-left cursor-pointer text-gray-300 font-semibold"
+                          className="hover:text-blue-500 dark:hover:text-blue-300 text-left cursor-pointer text-gray-700 dark:text-gray-300 font-semibold"
                         >
                           {subCategory}
                         </NavLink>
@@ -176,7 +176,7 @@ const CategoryNavbar = () => {
                               draggable="false"
                               to={`/store/${cat}/${subCategory}/${item}`}
                               key={index}
-                              className="hover:text-blue-300 text-left cursor-pointer"
+                              className="hover:text-blue-500 dark:hover:text-blue-300 text-left cursor-pointer"
                             >
                               {item}
                             </NavLink>

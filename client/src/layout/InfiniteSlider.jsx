@@ -29,7 +29,7 @@ const InfiniteSlider = () => {
   }, [dispatch]);
 
   return (
-    <div className="relative overflow-hidden m-0 md:m-5 py-2 -mb-8">
+    <div className="relative overflow-hidden m-0 md:m-3 py-2 -mb-8">
       {/* Inline animation with responsive speed */}
       <style>
         {`
