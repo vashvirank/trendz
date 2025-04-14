@@ -6,6 +6,7 @@ import SellerNavbar from "../layout/SellerNavbar.jsx";
 import { toast } from "react-toastify";
 import ProductCard from "../components/ProductCard";
 import { useSelector } from "react-redux";
+import { Funnel, ArrowUpAZ, ArrowDownAZ, X } from "lucide-react";
 
 const limit = import.meta.env.VITE_PAGE_LIMIT || 10;
 
@@ -31,7 +32,7 @@ const SellerStore = () => {
   const [brand, setBrand] = useState([]);
   const [type, setType] = useState([]);
   const [category1, setCategory1] = useState("All");
-  const [subCategory, setSubCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("All");
   const [sortBy, setSortBy] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(false);
@@ -145,6 +146,13 @@ const SellerStore = () => {
     setSortBy([]);
     setSearchParams({});
   };
+
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+
+  const toggleMobileFilters = () => {
+    setShowMobileFilters((prev) => !prev);
+  };
+
   return (
     <>
       <SellerNavbar />
@@ -167,12 +175,38 @@ const SellerStore = () => {
         <h2 className="text-2xl text-center m-4">Your Products</h2>
 
         <div className="bg-blue-50 dark:bg-gray-950">
+          {/* Mobile Filters Button */}
+          <div className="md:hidden w-full rounded-t-2xl fixed bottom-0 z-10 bg-gray-900/90 backdrop-blur-[5px] p-2">
+            <div className="flex items-center justify-center gap-3">
+              <button
+                onClick={toggleMobileFilters}
+                className="flex items-center gap-1 px-5 py-1 rounded-full bg-blue-500/20 text-blue-500"
+              >
+                Filters <Funnel size={14} />
+              </button>
+              <button
+                className="px-5 py-1 rounded-full bg-gray-300/20 text-gray-300"
+                onClick={resetFilters}
+              >
+                Reset ↻
+              </button>
+            </div>
+          </div>
+
+          {/* Backdrop */}
+          {showMobileFilters && (
+            <div
+              className="fixed inset-0 z-9 bg-black/50 md:hidden"
+              onClick={toggleMobileFilters}
+            />
+          )}
           <div className="flex">
-            <section className="w-40 min-h-[100vh] bg-white/5 text-white/60">
+            {/* siderbar desktop */}
+            <section className="hidden md:block min-w-40 min-h-[100vh] bg-blue-100/50 dark:bg-white/5">
               <div>
                 {/* Reset Button */}
                 <div className="my-3 flex justify-center items-center gap-2">
-                  <h2 className=" font-semibold text-white/80">Filter</h2>
+                  <h2 className=" font-semibold">Filter</h2>
                   <button
                     className="text-blue-400 hover:bg-white/5 border border-white/10 px-1 rounded"
                     onClick={resetFilters}
@@ -181,43 +215,56 @@ const SellerStore = () => {
                   </button>
                 </div>
               </div>
-              <div className="p-3 border-t border-t-white/10">
-                <h3 className="mb-1 text-white/90">Order</h3>
-                <span className="flex items-center">
+
+              <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                <h3 className="mb-1">Order</h3>
+                <span className="flex items-center gap-1">
                   <input
                     type="checkbox"
                     id="ascending"
-                    className="relative top-0.5 right-1"
+                    className={`${
+                      order === "ascending" ? "scale-90" : "appearance-none"
+                    } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
                     checked={order === "ascending"}
                     onChange={() => handleSortChange("ascending")}
                   />
-                  <label htmlFor="ascending" className="w-full">
-                    Ascending ↑
+                  <label
+                    htmlFor="ascending"
+                    className="w-full flex gap-1 items-end"
+                  >
+                    Ascending <ArrowUpAZ size="20" />
                   </label>
                 </span>
-                <span className="flex items-center">
+                <span className="flex items-center gap-1">
                   <input
                     type="checkbox"
                     id="descending"
-                    className="relative top-0.5 right-1"
+                    className={`${
+                      order === "descending" ? "scale-90" : "appearance-none"
+                    } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
                     checked={order === "descending"}
                     onChange={() => handleSortChange("descending")}
                   />
-                  <label htmlFor="descending" className="w-full">
-                    Descending ↓
+                  <label
+                    htmlFor="descending"
+                    className="w-full flex gap-1 items-end"
+                  >
+                    Descending <ArrowDownAZ size="20" />
                   </label>
                 </span>
               </div>
 
               {/* sort by */}
-              <div className="p-3 border-t border-t-white/10">
-                <h3 className="mb-1 text-white/90">Sort By</h3>
+              <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                <h3 className="mb-1">Sort By</h3>
                 {["price", "ratings", "no. of reviews"].map((sort) => (
-                  <span key={sort} className="flex items-center">
+                  <span key={sort} className="flex items-center gap-1">
                     <input
                       type="checkbox"
                       id={sort}
-                      className="relative top-0.5 right-1"
+                      className={`${
+                        sortBy.includes(sort) ? "scale-90" : "appearance-none"
+                      } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
                       onChange={handleSortBy}
                       checked={sortBy.includes(sort)}
                     />
@@ -229,11 +276,178 @@ const SellerStore = () => {
               </div>
 
               {/* color */}
-              {category1 && (
-                <div className="p-3 border-t border-t-white/10">
-                  <h3 className="mb-2 text-white/90">Colour</h3>
-                  <div className="grid grid-cols-3 px-2">
-                    {category[category1]?.colours?.map((colour) => {
+              <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                <h3 className="mb-1.5">Colour</h3>
+                <div className="grid grid-cols-3 px-2">
+                  {category[category1]?.colours.map((colour) => {
+                    const isSelected = color.includes(colour);
+                    return (
+                      <div
+                        key={colour}
+                        onClick={() => handleColorChange(colour)}
+                        className={`cursor-pointer h-8 w-8 border-2 rounded-full flex flex-col justify-center items-center transition 
+              ${isSelected ? "border-white" : "border-transparent"}`}
+                      >
+                        <span
+                          className="w-6 h-6 rounded-full"
+                          style={{ backgroundColor: colour }}
+                        />
+                        {colour === "Multi" && (
+                          <img
+                            draggable="false"
+                            src="/images/multi.png"
+                            className="w-6 h-6"
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* type  */}
+              {category[category1]?.subCategoryTypes[subCategory] && (
+                <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                  <h3 className="mb-1.5">Type</h3>
+                  {category[category1]?.subCategoryTypes[subCategory]?.map(
+                    (Type) => (
+                      <span key={Type} className="flex gap-1 items-center">
+                        <input
+                          type="checkbox"
+                          id={Type}
+                          className={`${
+                            type.includes(Type) ? "scale-90" : "appearance-none"
+                          } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                          onChange={handleTypeChange}
+                          checked={type.includes(Type)}
+                        />
+                        <label htmlFor={Type} className="w-full">
+                          {Type}
+                        </label>
+                      </span>
+                    )
+                  )}
+                </div>
+              )}
+
+              {/* brand  */}
+              {category[category1]?.subCategoryBrands && (
+                <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                  <h3 className="mb-1.5">Brand</h3>
+                  {category[category1]?.subCategoryBrands[subCategory]?.map(
+                    (Brand) => (
+                      <span key={Brand} className="flex gap-1 items-center">
+                        <input
+                          type="checkbox"
+                          id={Brand}
+                          className={`${
+                            brand.includes(Brand)
+                              ? "scale-90"
+                              : "appearance-none"
+                          } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                          onChange={handleBrandChange}
+                          checked={brand.includes(Brand)}
+                        />
+                        <label htmlFor={Brand} className="w-full">
+                          {Brand}
+                        </label>
+                      </span>
+                    )
+                  )}
+                </div>
+              )}
+            </section>
+
+            {/* siderbar mobile */}
+            <div
+              className={`${
+                showMobileFilters ? "fixed" : "hidden"
+              } bottom-0 z-10`}
+            >
+              <section className="grid grid-cols-2 w-screen min-h-[80vh] bg-blue-100/50 dark:bg-gray-900 px-3">
+                <div className="col-span-2">
+                  {/* Reset Button */}
+                  <div className="my-3 pr-1 flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-3">
+                      <h2 className=" font-semibold">Filter</h2>
+                      <button
+                        className="text-blue-500 hover:bg-white/5 border border-white/10 px-1 rounded"
+                        onClick={resetFilters}
+                      >
+                        Reset ↻
+                      </button>
+                    </div>
+                    <button onClick={toggleMobileFilters}>
+                      <X />
+                    </button>
+                  </div>
+                </div>
+
+                {/* order */}
+                <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                  <h3 className="mb-1">Order</h3>
+                  <span className="flex gap-2 items-center">
+                    <input
+                      type="checkbox"
+                      id="ascending"
+                      className={`${
+                        order === "ascending" ? "scale-90" : "appearance-none"
+                      } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                      checked={order === "ascending"}
+                      onChange={() => handleSortChange("ascending")}
+                    />
+                    <label
+                      htmlFor="ascending"
+                      className="w-full flex gap-1 items-end"
+                    >
+                      Ascending <ArrowUpAZ size="20" />
+                    </label>
+                  </span>
+                  <span className="flex gap-2 items-center">
+                    <input
+                      type="checkbox"
+                      id="descending"
+                      className={`${
+                        order === "descending" ? "scale-90" : "appearance-none"
+                      } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                      checked={order === "descending"}
+                      onChange={() => handleSortChange("descending")}
+                    />
+                    <label
+                      htmlFor="descending"
+                      className="w-full flex gap-1 items-end"
+                    >
+                      Descending <ArrowDownAZ size="20" />
+                    </label>
+                  </span>
+                </div>
+
+                {/* sort by */}
+                <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                  <h3 className="mb-1">Sort By</h3>
+                  {["price", "ratings", "no. of reviews"].map((sort) => (
+                    <span key={sort} className="flex gap-2 items-center">
+                      <input
+                        type="checkbox"
+                        id={sort}
+                        className={`${
+                          sortBy.includes(sort) ? "scale-90" : "appearance-none"
+                        } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
+                        onChange={handleSortBy}
+                        checked={sortBy.includes(sort)}
+                      />
+                      <label htmlFor={sort} className="w-full">
+                        {sort}
+                      </label>
+                    </span>
+                  ))}
+                </div>
+
+                {/* color */}
+                <div className="col-span-2 p-3 border-t border-t-black/10 dark:border-t-white/10">
+                  <h3 className="mb-1.5">Colour</h3>
+                  <div className="flex gap-1 px-2">
+                    {category["Men"]?.colours.map((colour) => {
                       const isSelected = color.includes(colour);
                       return (
                         <div
@@ -258,19 +472,19 @@ const SellerStore = () => {
                     })}
                   </div>
                 </div>
-              )}
 
-              {/* type  */}
-              {category1 && subCategory && (
-                <div className="p-3 border-t border-t-white/10">
-                  <h3 className="mb-1.5 text-white/90">Type</h3>
-                  {category[category1]?.subCategoryTypes[subCategory]?.map(
+                {/* type  */}
+                <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                  <h3 className="mb-1.5">Type</h3>
+                  {category["Men"]?.subCategoryTypes[subCategory]?.map(
                     (Type) => (
                       <span key={Type} className="flex gap-2 items-center">
                         <input
                           type="checkbox"
                           id={Type}
-                          className="relative top-0.5"
+                          className={`${
+                            type.includes(Type) ? "scale-90" : "appearance-none"
+                          } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
                           onChange={handleTypeChange}
                           checked={type.includes(Type)}
                         />
@@ -281,19 +495,21 @@ const SellerStore = () => {
                     )
                   )}
                 </div>
-              )}
 
-              {/* brand  */}
-              {category1 && subCategory && (
-                <div className="p-3 border-t border-t-white/10">
-                  <h3 className="mb-1.5 text-white/90">Brand</h3>
-                  {category[category1]?.subCategoryBrands[subCategory]?.map(
+                {/* brand  */}
+                <div className="p-3 border-t border-t-black/10 dark:border-t-white/10">
+                  <h3 className="mb-1.5">Brand</h3>
+                  {category["Men"]?.subCategoryBrands[subCategory]?.map(
                     (Brand) => (
                       <span key={Brand} className="flex gap-2 items-center">
                         <input
                           type="checkbox"
                           id={Brand}
-                          className="relative top-0.5"
+                          className={`${
+                            brand.includes(Brand)
+                              ? "scale-90"
+                              : "appearance-none"
+                          } relative right-1 aspect-square h-3.5 border-1 border-black/25 dark:border-white/25 transition-transform active:scale-90 rounded-sm`}
                           onChange={handleBrandChange}
                           checked={brand.includes(Brand)}
                         />
@@ -304,17 +520,18 @@ const SellerStore = () => {
                     )
                   )}
                 </div>
-              )}
-            </section>
+              </section>
+            </div>
 
             <div className="w-full">
               {loading ? (
                 <p>Loading...</p>
               ) : (
                 <>
-                  <div className="">
+                  <div className="flex flex-wrap justify-center items-center gap-4 p-4 bg-gray-500/10 rounded-lg">
+                    {/* Category Selector */}
                     <select
-                      className="bg-gray-900"
+                      className="bg-gray-900 text-white px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       value={category1}
                       onChange={(e) => handleCategoryClick(e.target.value)}
                     >
@@ -324,12 +541,14 @@ const SellerStore = () => {
                         </option>
                       ))}
                     </select>
+
+                    {/* Subcategory Selector */}
                     {category1 && (
                       <select
                         name="subCategory"
                         value={subCategory}
                         onChange={(e) => handleSubCategoryClick(e.target.value)}
-                        className="border p-1 rounded bg-gray-900"
+                        className="bg-gray-900 text-white px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="">All</option>
                         {data[category1]?.map((sub) => (
@@ -339,7 +558,51 @@ const SellerStore = () => {
                         ))}
                       </select>
                     )}
+
+                    {/* Pagination */}
+                    <div className="flex items-center gap-2 ml-auto text-sm text-white">
+                      <span>
+                        Page{" "}
+                        <span className="text-blue-400 font-semibold">
+                          {pages === 0 ? 0 : page}
+                        </span>{" "}
+                        of {pages}
+                      </span>
+
+                      {/* Prev Button */}
+                      <button
+                        disabled={page === 1}
+                        onClick={() => setPage(page - 1)}
+                        className={`w-8 h-8 flex items-center justify-center rounded-full 
+        ${
+          page === 1
+            ? "bg-gray-600 cursor-not-allowed"
+            : "bg-gray-700 hover:bg-gray-600"
+        }`}
+                      >
+                        <svg width="16" height="16" fill="currentColor">
+                          <use xlinkHref="/icons.svg#prev-icon" />
+                        </svg>
+                      </button>
+
+                      {/* Next Button */}
+                      <button
+                        disabled={page === pages}
+                        onClick={() => setPage(page + 1)}
+                        className={`w-8 h-8 flex items-center justify-center rounded-full 
+        ${
+          page === pages
+            ? "bg-gray-600 cursor-not-allowed"
+            : "bg-gray-700 hover:bg-gray-600"
+        }`}
+                      >
+                        <svg width="16" height="16" fill="currentColor">
+                          <use xlinkHref="/icons.svg#next-icon" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
+
                   {productsList && productsList.length !== 0 ? (
                     <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 p-3">
                       {productsList?.map((product) => (
@@ -366,42 +629,6 @@ const SellerStore = () => {
                       </div>
                     </div>
                   )}
-
-                  <div className="flex items-center justify-center gap-1.5">
-                    <span>
-                      {" "}
-                      page{" "}
-                      <span className="text-blue-500">
-                        {pages === 0 ? 0 : page}
-                      </span>{" "}
-                      of {pages}{" "}
-                    </span>
-                    <button
-                      disabled={page === 1}
-                      onClick={() => setPage(page - 1)}
-                      className="aspect-square w-6 h-6 rounded-full
-                     bg-black/10 hover:bg-black/20
-                      dark:bg-white/10 dark:hover:bg-white/15
-                      flex justify-center items-center"
-                    >
-                      <svg width="22" height="22">
-                        <use xlinkHref="/icons.svg#prev-icon" />
-                      </svg>
-                    </button>
-
-                    <button
-                      disabled={page === pages}
-                      onClick={() => setPage(page + 1)}
-                      className="aspect-square w-6 h-6 rounded-full
-                     bg-black/10 hover:bg-black/20
-                      dark:bg-white/10 dark:hover:bg-white/15
-                      flex justify-center items-center"
-                    >
-                      <svg width="22" height="22">
-                        <use xlinkHref="/icons.svg#next-icon" />
-                      </svg>
-                    </button>
-                  </div>
                 </>
               )}
             </div>

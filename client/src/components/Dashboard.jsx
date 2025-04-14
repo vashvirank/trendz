@@ -36,6 +36,9 @@ const navItems = [
 ];
 
 const Dashboard = () => {
+  const url =
+    "https://res.cloudinary.com/dsror8r39/image/upload/v1744352677/user_shodqy.png";
+
   const { user, user1 } = useSelector((state) => state.auth);
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -52,6 +55,7 @@ const Dashboard = () => {
     if (x) {
       dispatch(logout());
       navigate("/");
+      toast.success("successfully logged out!");
     }
   };
 
@@ -180,14 +184,14 @@ const Dashboard = () => {
           <div className="bg-gray-50 dark:bg-gray-800/50 md:col-span-2 p-6 rounded-lg flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="relative self-center">
               <img
-                src="https://i.pravatar.cc/100?img=3"
+                src={user1?.image || url}
                 alt="User Avatar"
                 className="w-24 h-24 rounded-full object-cover border-4 border-blue-500/20"
               />
               {user1?.accountVerified && (
                 <BadgeCheck
                   strokeWidth="1.5"
-                  className="text-blue-500 fill-blue-500/40 absolute top-0.5 right-0.5"
+                  className="text-green-500 fill-green-500/40 absolute top-0.5 right-0.5"
                 />
               )}
             </div>
@@ -383,9 +387,10 @@ const Dashboard = () => {
         <div className="bg-gray-600/10 rounded-lg py-3 px-4">
           <h3 className="text-lg font-medium">Logout</h3>
           <div className="flex items-center gap-2 ml-5 mt-2">
-            <p>Want to log put?</p>
+            <p>Want to log out?</p>
 
             <button
+              type="button"
               onClick={handleLogout}
               className="hover:scale-95 transition-transform text-blue-500 hover:text-blue-600 bg-blue-500/15 px-5 py-0.5 rounded-full"
             >
