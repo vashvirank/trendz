@@ -1064,7 +1064,7 @@ const ProductDetails = () => {
           </>
         )}
 
-        {user?.role !== "customer" && (
+        {(user?.role === "seller" || user?.role === "admin") && (
           <div className="mt-4">
             {isEditing ? (
               <>
