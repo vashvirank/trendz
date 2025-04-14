@@ -17,6 +17,7 @@ import {
   ChevronUp,
   ChevronDown,
 } from "lucide-react";
+import Loader from "./Loader.jsx";
 
 const CartBoard = () => {
   const dispatch = useDispatch();
@@ -125,7 +126,7 @@ const CartBoard = () => {
         <main className="px-1 md:px-4 flex flex-col lg:flex-row gap-8 mb-16">
           <>
             {loading ? (
-              <p>Loading...</p>
+              <Loader />
             ) : (
               <>
                 {products && products?.length !== 0 ? (

@@ -59,6 +59,7 @@ const SellerRegister = () => {
     }
     const data = new FormData();
     data.append("name", name);
+    data.append("role", "seller");
     data.append("email", email);
     data.append("phone", phone);
     data.append("password", password);

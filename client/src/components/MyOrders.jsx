@@ -6,6 +6,7 @@ import {
   cancelOrder,
   resetOrderSlice,
 } from "../store/slices/orderSlice.js";
+import ProductLoader from "./ProductLoader.jsx";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -58,11 +59,9 @@ const MyOrders = () => {
         </h3>
 
         {loading ? (
-          <p className="text-center text-lg text-gray-600 dark:text-gray-300">
-            Loading...
-          </p>
+          <ProductLoader />
         ) : orders && orders.length !== 0 ? (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
             {orders.map((order) => (
               <li
                 key={order?._id}

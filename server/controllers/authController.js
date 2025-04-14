@@ -11,6 +11,11 @@ import crypto from "crypto";
 export const register = catchAsyncErrors(async (req, res, next) => {
   try {
     const { name, email, password, phone } = req.body;
+
+    let role;
+    if (!req.body.role) role = "customer";
+    else role = req.body.role;
+
     if (!name || !email || !password) {
       return next(new ErrorHandler("Please enter all required fields", 400));
     }
@@ -44,6 +49,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
       name,
       email,
       phone,
+      role,
       password: hashedPassword,
       accountVerified: false,
     });

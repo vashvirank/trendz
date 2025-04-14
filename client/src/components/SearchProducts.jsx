@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchedProducts } from "../store/slices/productSlice";
 import { useLocation } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import ProductLoader from "./ProductLoader";
 
 const limit = import.meta.env.VITE_PAGE_LIMIT || 10;
 
@@ -34,7 +35,7 @@ const SearchProducts = () => {
         Showing results for "{query}"
       </h2>
       {loading ? (
-        <p>Loading...</p>
+        <ProductLoader />
       ) : (
         <>
           {products && products.length !== 0 ? (

@@ -8,6 +8,7 @@ import {
   addToCart,
 } from "../store/slices/productSlice.js";
 import { Trash2, Package, CircleDollarSign, Headphones } from "lucide-react";
+import Loader from "./Loader.jsx";
 
 const WishList = () => {
   const dispatch = useDispatch();
@@ -77,7 +78,7 @@ const WishList = () => {
 
           <div>
             {loading ? (
-              <p>Loading...</p>
+              <Loader />
             ) : (
               <>
                 {products && products?.length !== 0 ? (

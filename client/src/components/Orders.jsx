@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSellerOrderes } from "../store/slices/orderSlice";
 import AdminNavbar from "../layout/AdminNavbar";
 import SellerNavbar from "../layout/SellerNavbar";
+import ProductLoader from "./ProductLoader";
 
 const Orders = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Orders = () => {
           <div>
             <div>
               {loading ? (
-                <p>Loading...</p>
+                <ProductLoader />
               ) : (
                 <>
                   {orders && orders?.length !== 0 ? (

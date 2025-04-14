@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../store/slices/categorySlice.js";
 import { ArrowUpAZ, ArrowDownAZ, X, Funnel } from "lucide-react";
 import FilterTag from "../components/FilterTag.jsx";
+import ProductLoader from "../components/ProductLoader.jsx";
 
 const limit = import.meta.env.VITE_PAGE_LIMIT || 10;
 
@@ -623,7 +624,7 @@ const Beauty = () => {
             )}
 
             {loading ? (
-              <p>Loading...</p>
+              <ProductLoader />
             ) : (
               <>
                 {productsList && productsList.length !== 0 ? (

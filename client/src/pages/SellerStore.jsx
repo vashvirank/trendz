@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import ProductCard from "../components/ProductCard";
 import { useSelector } from "react-redux";
 import { Funnel, ArrowUpAZ, ArrowDownAZ, X } from "lucide-react";
+import ProductLoader from "../components/ProductLoader.jsx";
 
 const limit = import.meta.env.VITE_PAGE_LIMIT || 10;
 
@@ -156,7 +157,7 @@ const SellerStore = () => {
   return (
     <>
       <SellerNavbar />
-      <div>
+      <div className="bg-blue-50 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
         <div
           className="flex flex-col md:flex-row items-center h-[60vh] md:h-[50vh] justify-evenly 
           bg-gradient-to-tl from-[#d3d7ff] to-[#96a2e6]
@@ -525,13 +526,13 @@ const SellerStore = () => {
 
             <div className="w-full">
               {loading ? (
-                <p>Loading...</p>
+                <ProductLoader />
               ) : (
                 <>
-                  <div className="flex flex-wrap justify-center items-center gap-4 p-4 bg-gray-500/10 rounded-lg">
+                  <div className="flex flex-wrap justify-center items-center gap-4 p-4 bg-white dark:bg-gray-500/10 rounded-lg">
                     {/* Category Selector */}
                     <select
-                      className="bg-gray-900 text-white px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="bg-gray-50 dark:bg-gray-900 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       value={category1}
                       onChange={(e) => handleCategoryClick(e.target.value)}
                     >
@@ -548,7 +549,7 @@ const SellerStore = () => {
                         name="subCategory"
                         value={subCategory}
                         onChange={(e) => handleSubCategoryClick(e.target.value)}
-                        className="bg-gray-900 text-white px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="bg-gray-50 dark:bg-gray-900 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="">All</option>
                         {data[category1]?.map((sub) => (
@@ -560,7 +561,7 @@ const SellerStore = () => {
                     )}
 
                     {/* Pagination */}
-                    <div className="flex items-center gap-2 ml-auto text-sm text-white">
+                    <div className="flex items-center gap-2 ml-auto text-sm">
                       <span>
                         Page{" "}
                         <span className="text-blue-400 font-semibold">
@@ -576,8 +577,8 @@ const SellerStore = () => {
                         className={`w-8 h-8 flex items-center justify-center rounded-full 
         ${
           page === 1
-            ? "bg-gray-600 cursor-not-allowed"
-            : "bg-gray-700 hover:bg-gray-600"
+            ? "bg-gray-500/20 cursor-not-allowed"
+            : "bg-gray-500/30 hover:bg-gray-500/40"
         }`}
                       >
                         <svg width="16" height="16" fill="currentColor">
@@ -592,8 +593,8 @@ const SellerStore = () => {
                         className={`w-8 h-8 flex items-center justify-center rounded-full 
         ${
           page === pages
-            ? "bg-gray-600 cursor-not-allowed"
-            : "bg-gray-700 hover:bg-gray-600"
+            ? "bg-gray-500/20 cursor-not-allowed"
+            : "bg-gray-500/30 hover:bg-gray-500/40"
         }`}
                       >
                         <svg width="16" height="16" fill="currentColor">

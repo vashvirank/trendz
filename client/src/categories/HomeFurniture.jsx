@@ -625,7 +625,7 @@ const HomeFurniture = () => {
             )}
 
             {loading ? (
-              <p>Loading...</p>
+              <ProductLoader />
             ) : (
               <>
                 {productsList && productsList.length !== 0 ? (
