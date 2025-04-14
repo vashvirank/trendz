@@ -61,7 +61,7 @@ const CategoryNavbar = () => {
           {isMenuOpen ? (
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="px-1 focus:outline-none text-gray-700 dark:text-gray-300 dark:hover:text-white flex items-center"
+              className="px-1 py-1 focus:outline-none text-gray-700 dark:text-gray-300 dark:hover:text-white flex items-center"
             >
               categories
               <svg width="20" height="20">
@@ -71,7 +71,7 @@ const CategoryNavbar = () => {
           ) : (
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="px-1 pb-1 focus:outline-none dark:text-gray-300 dark:hover:text-white flex items-center"
+              className="px-1 pb-1 py-1 focus:outline-none dark:text-gray-300 dark:hover:text-white flex items-center"
             >
               categories
               <svg width="20" height="20">
