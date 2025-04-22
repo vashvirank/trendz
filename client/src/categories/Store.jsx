@@ -79,7 +79,7 @@ const Store = () => {
                       key={ind}
                       draggable="false"
                       to={`/product/${card?._id}`}
-                      className="rounded-lg"
+                      className="rounded-lg "
                     >
                       <img
                         draggable="false"

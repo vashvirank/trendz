@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SellerRegister from "./pages/SellerRegister";
@@ -41,10 +46,21 @@ import AllUsers from "./pages/AllUsers";
 import Dashboard from "./components/Dashboard";
 import AllSales from "./pages/AllSales";
 import Footer from "./layout/Footer";
+import ReactGA from "react-ga4";
+
+const ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+
+ReactGA.initialize(ID);
 
 function App() {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   // const dispatch = useDispatch();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
 
   return (
     <Router>

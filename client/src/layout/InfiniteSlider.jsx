@@ -81,7 +81,7 @@ const InfiniteSlider = () => {
         </div>
 
         {/* Mobile */}
-        <div className="flex sm:hidden w-max scrolling-mobile">
+        <div className="flex sm:hidden gap-2 mb-10 w-max scrolling-mobile">
           {products &&
             products[0]?.images &&
             [...products, ...products].map((product, index) => (

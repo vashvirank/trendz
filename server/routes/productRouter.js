@@ -13,6 +13,7 @@ import {
   searchProducts,
   getProducts,
   getProductById,
+  // getSimilarProductsById,
   editProduct,
   addProductImage,
   deleteProductImage,
@@ -79,6 +80,7 @@ router.delete(
 router.get("/wishlist", isAuthenticated, isAuthorized("customer"), getWishList);
 router.get("/cart", isAuthenticated, isAuthorized("customer"), getCart);
 router.get("/search", searchProducts);
+// router.get("/:id/similar", getSimilarProductsById);
 router.get("/", getProducts);
 router.get("/:id", getProductById);
 router.post("/get-multiple", getMultipleProductsById);

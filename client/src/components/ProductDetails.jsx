@@ -946,7 +946,7 @@ const ProductDetails = () => {
         {!isEditing && user?.role !== "seller" && (
           <form
             onSubmit={handleSubmitReview}
-            className="border my-5 p-3 rounded-lg border-black/20 dark:border-white/20 flex items-center gap-3"
+            className="border my-5 p-3 rounded-lg border-black/20 dark:border-white/20 flex items-center flex-col md:flex-row gap-3"
           >
             <textarea
               placeholder="Add review..."
@@ -954,11 +954,10 @@ const ProductDetails = () => {
               className="border border-black/10 dark:border-white/10 px-1 active:outline-0 rounded w-full"
               onChange={(e) => setComment(e.target.value)}
             />
-            <label>Rating:</label>
             <select
               value={rating}
               onChange={(e) => setRating(e.target.value)}
-              className="border dark:bg-gray-800 min-w-50 rounded p-1  border-black/10 dark:border-white/10"
+              className="w-full md:w-20 border dark:bg-gray-800 min-w-50 rounded p-1  border-black/10 dark:border-white/10"
             >
               <option value="5">5 (Excellent)</option>
               <option value="4">4 (Good)</option>
@@ -969,7 +968,7 @@ const ProductDetails = () => {
 
             <button
               type="submit"
-              className="hover:scale-95 transition-transform bg-blue-500 text-white min-w-50 py-1 rounded"
+              className="w-full md:w-20 hover:scale-95 transition-transform bg-blue-500 text-white min-w-50 py-1 rounded"
             >
               Submit Review
             </button>
