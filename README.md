@@ -1,8 +1,6 @@
 # 🛍️ Trendz - online store (Full-stack Web Application)
 
-A full-featured e-commerce platform built using the MERN Stack, styled with Tailwind CSS, and hosted on Render. 
-Features include user authentication with JWT, RBAC(Customer, Seller, Admin), image uploads via Cloudinary, and a clean, 
-responsive design for modern online shopping experiences.
+A full-featured e-commerce platform built using the MERN Stack, styled with Tailwind CSS, and hosted on Render. Features include user authentication with JWT, RBAC(Customer, Seller, Admin), image uploads via Cloudinary, and a clean, responsive design for modern online shopping experiences.
 
 ---
 
@@ -49,7 +47,7 @@ npm install
 
 ## 🔐 Environment Variables
 
-# ● FRONTEND
+● FRONTEND
 
 Create a .env file in the client/ directory and include the following:
 
@@ -58,7 +56,7 @@ VITE_PAGE_LIMIT = 40
 VITE_GA_MEASUREMENT_ID = your_vite_ga_measurement_id
 
 
-# ● BACKEND
+● BACKEND
 
 Create a .env file in the server/ directory and include the following:
 
