@@ -33,19 +33,23 @@ A full-featured e-commerce platform built using the MERN Stack, styled with Tail
 
 ### Clone the repo
 ```bash
-git clone https://github.com/vashvirank/trendz.git<br>
+git clone https://github.com/vashvirank/trendz.git
 cd trendz
 ```
 
 ### Install backend dependencies
-cd server<br>
+```bash
+cd server
 npm install
-npm run dev<br>
+npm run dev
+```
 
 ### Install frontend dependencies
-cd ../client<br>
+```bash
+cd ../client
 npm install
-npm run dev<br>
+npm run dev
+```
 
 ---
 
@@ -55,17 +59,18 @@ npm run dev<br>
 
 Create a .env file in the client/ directory and include the following:
 
+```
 VITE_BASE_URL = your_backend_url<br>
 VITE_PAGE_LIMIT = 40<br>
 VITE_GA_MEASUREMENT_ID = your_vite_ga_measurement_id
-
+```
 
 ### ● BACKEND
 
 Create a .env file in the server/ directory and include the following:
-
-CLOUDINARY_API_KEY = your_api_key<br>
-CLOUDINARY_API_SECRET = your_api_secret<br>
+```
+CLOUDINARY_API_KEY = your_api_key
+CLOUDINARY_API_SECRET = your_api_secret
 CLOUDINARY_CLOUD_NAME = your_cloud_name<br>
 COOKIE_EXPIRE = 3<br>
 FRONTEND_URL = your_frontend_url<br>
@@ -79,17 +84,22 @@ SMTP_MAIL = your_smtp_mail<br>
 SMTP_PASSWORD = your_smtp_password<br>
 SMTP_PORT = your_smtp_port<br>
 SMTP_SERVICE = gmail<br>
+```
 
 ---
 
 ## ▶️ Live Demo
 
+```
 Visit: https://trendz-fashion.onrender.com
+```
 
 ---
 
 ## 📬 Contact
 
-Have questions or feedback? Reach out via:<br>
+Have questions or feedback? Reach out via:
+```
 Email: vashvirank28@gmail.com<br>
 GitHub: @vashvirank<br>
+```
