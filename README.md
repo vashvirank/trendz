@@ -47,7 +47,7 @@ npm install
 
 ## 🔐 Environment Variables
 
-● FRONTEND
+### ● FRONTEND
 
 Create a .env file in the client/ directory and include the following:
 
@@ -56,7 +56,7 @@ VITE_PAGE_LIMIT = 40<br>
 VITE_GA_MEASUREMENT_ID = your_vite_ga_measurement_id
 
 
-● BACKEND
+### ● BACKEND
 
 Create a .env file in the server/ directory and include the following:
 
