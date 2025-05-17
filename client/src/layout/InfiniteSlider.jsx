@@ -7,20 +7,20 @@ const InfiniteSlider = () => {
   const dispatch = useDispatch();
 
   const ids = [
-    "67e6e27b74ecf5e790a5b511",
-    "67e6e27374ecf5e790a5b4d4",
-    "67e6e27b74ecf5e790a5b51d",
-    "67e6e27374ecf5e790a5b4c6",
-    "67e6e27b74ecf5e790a5b4f4",
-    "67e6e27b74ecf5e790a5b507",
-    "67e6e27374ecf5e790a5b4b2",
-    "67e6e27b74ecf5e790a5b4fc",
-    "67e6e27b74ecf5e790a5b4fd",
-    "67e6e27374ecf5e790a5b4cc",
-    "67e6e27374ecf5e790a5b4b5",
-    "67e6e27b74ecf5e790a5b4e2",
-    "67e6e27b74ecf5e790a5b527",
-    "67e6e27374ecf5e790a5b4cd",
+    "67e8fd587090e3ff6167d24a",
+    "67e8fd587090e3ff6167d250",
+    "67e6e24274ecf5e790a5b419",
+    "67e6e23c74ecf5e790a5b415",
+    "67e6e1b474ecf5e790a5b3de",
+    "67e6e28274ecf5e790a5b567",
+    "67e6e28274ecf5e790a5b54a",
+    "67e6e2c874ecf5e790a5b5e7",
+    "67e6e2c874ecf5e790a5b5d0",
+    "67e6e2c874ecf5e790a5b5ca",
+    "67e6e2c874ecf5e790a5b5cc",
+    "67e6e2c874ecf5e790a5b5c3",
+    "67e8fe367090e3ff6167d300",
+    "67e8fe367090e3ff6167d2f3",
   ];
 
   let { products } = useSelector((state) => state.product);
