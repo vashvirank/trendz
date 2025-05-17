@@ -32,16 +32,20 @@ A full-featured e-commerce platform built using the MERN Stack, styled with Tail
 ## 🛠️ Installation
 
 ### Clone the repo
+```bash
 git clone https://github.com/vashvirank/trendz.git<br>
 cd trendz
+```
 
 ### Install backend dependencies
 cd server<br>
 npm install
+npm run dev<br>
 
 ### Install frontend dependencies
 cd ../client<br>
 npm install
+npm run dev<br>
 
 ---
 
