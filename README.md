@@ -90,21 +90,13 @@ SMTP_SERVICE = gmail
 
 ## ▶️ Live Demo
 
-Visit:
-```
-https://trendz-fashion.onrender.com
-```
+Visit: https://trendz-fashion.onrender.com
+
 
 ---
 
 ## 📬 Contact
 
 Have questions or feedback? Reach out via:<br>
-Email:
-```
-vashvirank28@gmail.com
-```
-GitHub: 
-```
-@vashvirank
-```
+Email: vashvirank28@gmail.com<br>
+GitHub: @vashvirank
