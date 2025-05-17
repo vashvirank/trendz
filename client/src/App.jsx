@@ -43,7 +43,6 @@ import Footer from "./layout/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ReactGA from "react-ga4";
 import AnalyticsTracker from "./components/AnalyticsTracker";
-// import Chatbot from "./components/Chatbot";
 
 const ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 ReactGA.initialize(ID);
@@ -90,7 +89,6 @@ function App() {
             )
           }
         />
-        <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/seller-register" element={<SellerRegister />} />
