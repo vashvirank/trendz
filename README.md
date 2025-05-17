@@ -39,7 +39,7 @@ cd trendz
 cd server<br>
 npm install
 
-# Install frontend dependencies
+### Install frontend dependencies
 cd ../client<br>
 npm install
 
