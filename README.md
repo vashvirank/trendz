@@ -99,7 +99,7 @@ https://trendz-fashion.onrender.com
 
 ## 📬 Contact
 
-Have questions or feedback? Reach out via:
+Have questions or feedback? Reach out via:<br>
 Email:
 ```
 vashvirank28@gmail.com
