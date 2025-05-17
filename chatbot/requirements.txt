@@ -1,0 +1,6 @@
+fastapi
+python-dotenv
+pymongo
+python-socketio[asgi]
+google-cloud-dialogflow
+uvicorn
