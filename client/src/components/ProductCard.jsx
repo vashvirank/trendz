@@ -99,7 +99,7 @@ const ProductCard = ({ product }) => {
               src={product?.images[0] || "/images/bag-logo.png"}
               alt={product?.name}
               className={`${
-                product?.images[0] ? "" : "grayscale opacity-50"
+                product?.images[0] ? "" : "grayscale opacity-75"
               } w-full aspect-square object-cover transform group-hover:scale-105 transition-transform duration-300`}
             />
             <span className="absolute top-1 left-1 tracking-tighter rounded-tl-lg rounded-br-lg backdrop-blur-[1px] text-xs px-1 bg-rose-500/80 text-white">
