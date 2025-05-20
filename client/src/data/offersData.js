@@ -1,4 +1,5 @@
 export const productsIds = [
+<<<<<<< HEAD
   "67e8fd4c7090e3ff6167d225",
   "67e6e26b74ecf5e790a5b442",
   "67e8fd587090e3ff6167d248",
@@ -9,6 +10,18 @@ export const productsIds = [
   "67e6e26b74ecf5e790a5b42a",
   "67e8fd587090e3ff6167d246",
   "67e6e27b74ecf5e790a5b519",
+=======
+  "67e8fd587090e3ff6167d261",
+  "67e6e20674ecf5e790a5b402",
+  "67e8fd587090e3ff6167d248",
+  "67e8fd3c7090e3ff6167d200",
+  "67e8fd587090e3ff6167d242",
+  "67e6e1fa74ecf5e790a5b3ec",
+  "67e8fd587090e3ff6167d230",
+  "67e6e26b74ecf5e790a5b42a",
+  "67e8fd587090e3ff6167d242",
+  "67e6e27b74ecf5e790a5b529",
+>>>>>>> 5038f9e2f4e2f229ea1f300aaf2960c82b51a272
   "67e8fe367090e3ff6167d2b8",
   "67e6e2c874ecf5e790a5b5a7",
   "67e8fe367090e3ff6167d2ff",
