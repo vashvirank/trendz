@@ -9,6 +9,8 @@ import LogoSlider from "../components/LogoSlider";
 import { setCategory } from "../store/slices/categorySlice.js";
 import { useDispatch } from "react-redux";
 import { productsIds, productsData } from "../data/cardData.js";
+import { useNavigate } from "react-router-dom";
+import Chat from "../components/Chat.jsx";
 
 const BACKEND_URL = import.meta.env.VITE_BASE_URL;
 
@@ -16,6 +18,7 @@ const Store = () => {
   const banner =
     "https://res.cloudinary.com/dsror8r39/image/upload/v1742750135/trendz/static/all/collection-banners";
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setCategory("All"));
@@ -56,6 +59,7 @@ const Store = () => {
 
   return (
     <>
+      <Chat />
       <CategoryNavbar />
       <div className="bg-gray-200 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
         <Slider />

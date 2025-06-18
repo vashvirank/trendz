@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
+const chatMessageSchema = new mongoose.Schema({
+  type: { type: String, enum: ["user", "assistant"], required: true },
+  content: { type: String, required: true },
+  timestamp: { type: Date, default: Date.now },
+});
+
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -38,6 +44,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       // required: true,
     },
+    chatHistory: [chatMessageSchema],
     orders: [
       {
         order_id: {

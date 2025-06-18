@@ -9,6 +9,7 @@ import productRouter from "./routes/productRouter.js";
 import orderRouter from "./routes/orderRouter.js";
 import { removeUnverifiedAccounts } from "./services/removeUnverifiedAccounts.js";
 import { cloudinaryConnect } from "./config/cloudinary.js";
+import chatbotRouter from "./routes/chatbotRouter.js";
 
 const app = express();
 dotenv.config({ path: ".env" });
@@ -34,6 +35,8 @@ app.use("/auth", authRouter);
 app.use("/order", orderRouter);
 
 app.use("/product", productRouter);
+
+app.use("/api/chatbot", chatbotRouter);
 
 removeUnverifiedAccounts();
 connectDB();
