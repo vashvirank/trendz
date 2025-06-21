@@ -55,11 +55,11 @@ const ProductCard = ({ product }) => {
 
   useEffect(() => {
     if (message) {
-      toast.success(message);
+      // toast.success(message);
       dispatch(resetProductSlice());
     }
     if (error) {
-      toast.error(error);
+      // toast.error(error);
       dispatch(resetProductSlice());
     }
   }, [dispatch, message, error]);
