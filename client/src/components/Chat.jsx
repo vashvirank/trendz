@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { MessageSquare, X, Send, Loader2 } from "lucide-react";
+const BACKEND_URL = import.meta.env.VITE_BASE_URL;
 
 const Chat = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -32,16 +33,13 @@ const Chat = () => {
           console.log("Fetching chat history...");
           setIsLoading(true);
 
-          const response = await fetch(
-            "http://localhost:7000/api/chatbot/history",
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-              credentials: "include",
-            }
-          );
+          const response = await fetch(`${BACKEND_URL}/api/chatbot/history`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            credentials: "include",
+          });
 
           const text = await response.text();
           console.log("Raw chat history response:", text);
